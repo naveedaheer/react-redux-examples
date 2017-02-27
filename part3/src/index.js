@@ -35,12 +35,21 @@ store.dispatch({ type: 'INC' })
 store.dispatch({ type: 'DEC' })
 
 
+function handleIncrement(){
+  store.dispatch({type: "INC"})
+} 
+
 ReactDOM.render(
 
   //Wraping up in Provider
   <Provider store={store}>
   <div>
     <App/>
+    <div>
+      <button onClick={()=>store.dispatch({type: "INC"})} > PLUS </button><br />
+      <button onClick={()=>store.dispatch({type: "DEC"}) } > MINUS </button><br />
+      <button onClick={handleIncrement} > PLUS with Handler</button><br />
+    </div>
   </div>
   </Provider>
   ,
