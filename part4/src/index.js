@@ -11,7 +11,7 @@ function counter(value = 0, action) {
   case 'INC':
     return value + 1
   case 'DEC':
-    return value - 3
+    return value - 1
   default:
     return value
   }
@@ -46,8 +46,8 @@ ReactDOM.render(
   <div>
     <App/>
     <div>
-      <button onClick={()=>store.dispatch({type: "INC"})} > PLUS </button><br />
-      <button onClick={()=>store.dispatch({type: "DEC"}) } > MINUS </button><br />
+      <button onClick={()=>store.dispatch({type: "INC"})} > PLUS 1</button><br />
+      <button onClick={()=>store.dispatch({type: "DEC"}) } > MINUS 1 </button><br />
       <button onClick={handleIncrement} > PLUS with Handler</button><br />
     </div>
   </div>

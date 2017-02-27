@@ -14,13 +14,32 @@ function mapStateToProps(state) {
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        increment: () => dispatch({ type: 'INC' }),
+        decrement: () => dispatch({ type: 'DEC' }),
+        incrementAgain : function (){
+          console.log("Incrementing value ");
+          // any logic and come here
+
+          // then return dispatch
+          return dispatch({ type: 'INC' });
+        }
+    };
+}
+
 class App extends Component {
   render() {
     return(
 <div><h1>React Redux App.js </h1>
-<h2>{this.props.counter}</h2></div>
+<h2>{this.props.counter}</h2>
+<h3>Events in App.js</h3>
+    <button onClick={this.props.increment}>Increment</button><br />
+    <button onClick={this.props.decrement}>Decrement</button><br />
+    <button onClick={this.props.incrementAgain}>Increment 2</button><br />
+</div>
     );
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
