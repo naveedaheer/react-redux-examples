@@ -45,36 +45,39 @@ function mapDispatchToProps(dispatch) {
 }
 
 class App extends Component {
-  constructor(){
-      super()
-      this.state = {
-          counterValue: "",
-          buttonValue: '',
-          buttonState: ""
-      }
-      this.changeValue = this.changeValue.bind(this)
-  }
+//   constructor(){
+//       super()
+//       this.state = {
+//           counterValue: "",
+//           buttonValue: '',
+//           buttonState: ""
+//       }
+//   }
+   
 
-  changeValue(event){
-      this.setState({counterValue: parseInt(event.target.value),
-      buttonValue: (event.target.value),
-    buttonState: "" })
-  }
+//   changeValue(event){
+//       this.setState({counterValue: parseInt(event.target.value),
+//       buttonValue: (event.target.value),
+//     buttonState: "" })
+//   }
 
   handleClick(){
       this.props.plusWithValue(this.state.counterValue)
   }
 
+updateCounter(value){
+    this.props.incrementWithValue(value);
+  }
+
   render() {
     return(
 <div><hr /><h1>React Redux App.js </h1>
-<Counter counter={this.props.plusCounter + this.props.minusCounter} /><hr />
+<Counter counter={this.props.plusCounter + this.props.minusCounter} update={this.updateCounter.bind(this)} /><hr />
 <h2>{this.props.plusCounter + this.props.minusCounter}</h2><hr /><hr />
 <h3>Events in App.js</h3>
-<input type="number" onChange={this.changeValue} />
-    <button onClick={this.handleClick.bind(this)} disabled={!this.state.counterValue} > Plus {this.state.buttonValue} </button><br />
-    <button onClick={this.props.increment}>Increment 1</button><br />
-    <button onClick={this.props.decrement}>Decrement 1</button><br />
+
+
+
     <button onClick={this.props.plusWithValue10} >Increment 10</button><br />
     <button onClick={this.props.minusWithValue}>Decrement 5</button><br />
     {/*<button onClick={this.props.incrementAgain}>Increment Again</button><br />*/}
