@@ -36,7 +36,7 @@ class App extends Component {
 <h3>Events in App.js</h3>
     <button onClick={this.props.increment}>Increment</button><br />
     <button onClick={this.props.decrement}>Decrement</button><br />
-    <button onClick={this.props.incrementAgain}>Increment 2</button><br />
+    <button onClick={this.props.incrementAgain}>Increment Again</button><br />
 </div>
     );
   }
