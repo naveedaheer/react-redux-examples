@@ -17,7 +17,11 @@ import {Provider} from "react-redux"
 // store.dispatch({ type: 'DEC' })
 
 function handleIncrement(){
-  store.dispatch({type: "INC"})
+  store.dispatch({type: "PLUS_WITH_VALUE", val:5})
+} 
+
+function handleDecrement(){
+  store.dispatch({type: "MINUS_WITH_VALUE", val:2})
 } 
 
 ReactDOM.render(
@@ -30,7 +34,8 @@ ReactDOM.render(
       <h3>Events in Index.js</h3>
       <button onClick={()=>store.dispatch({type: "INC"})} > PLUS 1</button><br />
       <button onClick={()=>store.dispatch({type: "DEC"}) } > MINUS 1 </button><br />
-      <button onClick={handleIncrement} > PLUS with Handler</button><br />
+      <button onClick={handleIncrement} > PLUS 5 with Handler</button><br />
+      <button onClick={handleDecrement} > MINUS 2 with Handler</button><br />
     </div>
   </div>
   </Provider>

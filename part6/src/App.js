@@ -18,13 +18,15 @@ function mapDispatchToProps(dispatch) {
     return {
         increment: () => dispatch({ type: 'INC' }),
         decrement: () => dispatch({ type: 'DEC' }),
-        incrementAgain : function (){
-          console.log("Incrementing value ");
-          // any logic and come here
+        plusWithValue: ()=> dispatch({type: "PLUS_WITH_VALUE", val:10}),
+        minusWithValue: ()=> dispatch({type: "MINUS_WITH_VALUE", val:5}),
+        // incrementAgain : function (){
+        //   console.log("Incrementing value ");
+        //   // any logic and come here
 
-          // then return dispatch
-          return dispatch({ type: 'INC' });
-        }
+        //   // then return dispatch
+        //   return dispatch({ type: 'INC' });
+        // }
     };
 }
 
@@ -34,9 +36,11 @@ class App extends Component {
 <div><h1>React Redux App.js </h1>
 <h2>{this.props.counter}</h2>
 <h3>Events in App.js</h3>
-    <button onClick={this.props.increment}>Increment</button><br />
-    <button onClick={this.props.decrement}>Decrement</button><br />
-    <button onClick={this.props.incrementAgain}>Increment Again</button><br />
+    <button onClick={this.props.increment}>Increment 1</button><br />
+    <button onClick={this.props.decrement}>Decrement 1</button><br />
+    <button onClick={this.props.plusWithValue}>Increment 10</button><br />
+    <button onClick={this.props.minusWithValue}>Decrement 5</button><br />
+    {/*<button onClick={this.props.incrementAgain}>Increment Again</button><br />*/}
 </div>
     );
   }
