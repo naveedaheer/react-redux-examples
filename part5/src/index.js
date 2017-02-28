@@ -2,16 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import { createStore } from 'redux'
+import {createStore} from "redux";
+import {Provider} from "react-redux"
 
-function counter(state = 0, action) {
+
+function counter(value = 0, action) {
   switch (action.type) {
   case 'INC':
-    return state + 1
+    return value + 1
   case 'DEC':
-    return state - 3
+    return value - 1
   default:
-    return state
+    return value
   }
 }
 
@@ -33,7 +35,23 @@ store.dispatch({ type: 'INC' })
 store.dispatch({ type: 'DEC' })
 
 
+function handleIncrement(){
+  store.dispatch({type: "INC"})
+} 
+
 ReactDOM.render(
-  <App />,
+
+  //Wraping up in Provider
+  <Provider store={store}>
+  <div>
+    <App/>
+    <div>
+      <button onClick={()=>store.dispatch({type: "INC"})} > PLUS 1</button><br />
+      <button onClick={()=>store.dispatch({type: "DEC"}) } > MINUS 1 </button><br />
+      <button onClick={handleIncrement} > PLUS with Handler</button><br />
+    </div>
+  </div>
+  </Provider>
+  ,
   document.getElementById('root')
 );
