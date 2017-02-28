@@ -6,17 +6,6 @@ import store from "./store/store"
 import {Provider} from "react-redux"
 import ActionTypes from "./store/actionTypes"
 
-// // The only way to mutate the internal state is to dispatch an action.
-// // The actions can be serialized, logged or stored and later replayed.
-// store.dispatch({ type: 'INC' })
-// // 1
-// store.dispatch({ type: 'INC' })
-// // 2
-// store.dispatch({ type: 'DEC' })
-// // 1
-// store.dispatch({ type: 'INC' })
-// store.dispatch({ type: 'DEC' })
-
 function handleIncrement(){
   store.dispatch(ActionTypes.incrementWithValue(5))
 } 

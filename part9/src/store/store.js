@@ -1,7 +1,13 @@
 import {createStore} from "redux";
-import counter from "./reducers/counter"
+import {combineReducers} from "redux"
+import incrementCounter from "./reducers/incrementCounter"
+import decrementCounter from "./reducers/decrementCounter"
 
-let store = createStore(counter)
+
+export const rootReducer = combineReducers({incrementCounter, decrementCounter})
+
+
+let store = createStore(rootReducer)
 
 store.subscribe(() =>
   console.log(store.getState())
