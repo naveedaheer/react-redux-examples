@@ -1,12 +1,14 @@
+import ActionTypes from "../actionTypes"
+
 function counter(value = 0, action) {
   switch (action.type) {
-  case 'INC':
+  case ActionTypes.INCREMENT:
     return value + 1
-  case 'DEC':
+  case ActionTypes.DECREMENT:
     return value - 1
-    case 'PLUS_WITH_VALUE':
+    case ActionTypes.INCREMENT_WITH_VALUE:
     return value + action.val;
-  case 'MINUS_WITH_VALUE':
+  case ActionTypes.DECREMENT_WITH_VALUE:
     return value - action.val;
   default:
     return value

@@ -4,6 +4,7 @@ import App from './App';
 import './index.css';
 import store from "./store/store"
 import {Provider} from "react-redux"
+import ActionTypes from "./store/actionTypes"
 
 // // The only way to mutate the internal state is to dispatch an action.
 // // The actions can be serialized, logged or stored and later replayed.
@@ -17,11 +18,11 @@ import {Provider} from "react-redux"
 // store.dispatch({ type: 'DEC' })
 
 function handleIncrement(){
-  store.dispatch({type: "PLUS_WITH_VALUE", val:5})
+  store.dispatch(ActionTypes.incrementWithValue(5))
 } 
 
 function handleDecrement(){
-  store.dispatch({type: "MINUS_WITH_VALUE", val:2})
+  store.dispatch(ActionTypes.decrementWithValue(2))
 } 
 
 ReactDOM.render(
@@ -32,8 +33,8 @@ ReactDOM.render(
     <App/>
     <div>
       <h3>Events in Index.js</h3>
-      <button onClick={()=>store.dispatch({type: "INC"})} > PLUS 1</button><br />
-      <button onClick={()=>store.dispatch({type: "DEC"}) } > MINUS 1 </button><br />
+      <button onClick={()=>store.dispatch(ActionTypes.increment())} > PLUS 1</button><br />
+      <button onClick={()=>store.dispatch(ActionTypes.decrement()) } > MINUS 1 </button><br />
       <button onClick={handleIncrement} > PLUS 5 with Handler</button><br />
       <button onClick={handleDecrement} > MINUS 2 with Handler</button><br />
     </div>

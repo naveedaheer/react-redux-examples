@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {connect} from "react-redux"
+import {connect} from "react-redux";
+import ActionTypes from "./store/actionTypes"
 
 function mapStateToProps(state) {
     return {
@@ -16,17 +17,17 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        increment: () => dispatch({ type: 'INC' }),
-        decrement: () => dispatch({ type: 'DEC' }),
+        increment: () => dispatch(ActionTypes.increment()),
+        decrement: () => dispatch(ActionTypes.decrement()),
         //plusWithValue: ()=> dispatch({type: "PLUS_WITH_VALUE", val:10}),
-        minusWithValue: ()=> dispatch({type: "MINUS_WITH_VALUE", val:5}),
+        minusWithValue: ()=> dispatch(ActionTypes.decrementWithValue(5)),
 
         plusWithValue: function(value){
-            return dispatch({type: "PLUS_WITH_VALUE", val:value})
+            return dispatch(ActionTypes.incrementWithValue(value))
         },
 
         plusWithValue10: function(){
-            return dispatch({type: "PLUS_WITH_VALUE", val:10})
+            return dispatch(ActionTypes.incrementWithValue(10))
         }
 
         // incrementAgain : function (){
@@ -36,6 +37,7 @@ function mapDispatchToProps(dispatch) {
         //   // then return dispatch
         //   return dispatch({ type: 'INC' });
         // }
+
     };
 }
 
@@ -43,15 +45,17 @@ class App extends Component {
   constructor(){
       super()
       this.state = {
-          counterValue: 0,
-          buttonValue: ''
+          counterValue: "",
+          buttonValue: '',
+          buttonState: ""
       }
       this.changeValue = this.changeValue.bind(this)
   }
 
   changeValue(event){
       this.setState({counterValue: parseInt(event.target.value),
-      buttonValue: (event.target.value) })
+      buttonValue: (event.target.value),
+    buttonState: "" })
   }
 
   handleClick(){
@@ -64,7 +68,7 @@ class App extends Component {
 <h2>{this.props.counter}</h2>
 <h3>Events in App.js</h3>
 <input type="number" onChange={this.changeValue} />
-    <button onClick={this.handleClick.bind(this)}>Plus {this.state.buttonValue} </button><br />
+    <button onClick={this.handleClick.bind(this)} disabled={!this.state.counterValue} > Plus {this.state.buttonValue} </button><br />
     <button onClick={this.props.increment}>Increment 1</button><br />
     <button onClick={this.props.decrement}>Decrement 1</button><br />
     <button onClick={this.props.plusWithValue10} >Increment 10</button><br />
