@@ -12,8 +12,8 @@ function mapStateToProps(state) {
         // reducer function will be in state, for now we are sending simple numaric
         // value therefore it will be simple integer
         //counter: state,
-        plusCounter: state.incrementCounter,
-        minusCounter: state.decrementCounter
+        plusCounter: state.incrementCounter.incrementState,
+        minusCounter: state.decrementCounter.decrementState
     };
 }
 
