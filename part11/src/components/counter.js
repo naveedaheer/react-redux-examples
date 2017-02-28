@@ -4,13 +4,15 @@ class Counter extends Component {
 
   render() {
     return (
-      <div >
+      <div ><hr />
         <div>
-           <h4> In Counter.js </h4>
+
+           <h4> In Counter.js Mummy Daddy Component </h4>
         </div>
         <div>
-           <h5> Counter --> {this.props.counter}  </h5>
+           <h5> Counter : {this.props.counter}  </h5>
         </div>
+        <hr />
       </div>
     );
   }

@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {connect} from "react-redux";
 import ActionTypes from "./store/actionTypes"
+import Counter from "./components/counter"
 
 function mapStateToProps(state) {
     return {
@@ -66,8 +67,9 @@ class App extends Component {
 
   render() {
     return(
-<div><h1>React Redux App.js </h1>
-<h2>{this.props.plusCounter + this.props.minusCounter}</h2>
+<div><hr /><h1>React Redux App.js </h1>
+<Counter counter={this.props.plusCounter + this.props.minusCounter} /><hr />
+<h2>{this.props.plusCounter + this.props.minusCounter}</h2><hr /><hr />
 <h3>Events in App.js</h3>
 <input type="number" onChange={this.changeValue} />
     <button onClick={this.handleClick.bind(this)} disabled={!this.state.counterValue} > Plus {this.state.buttonValue} </button><br />
@@ -76,7 +78,7 @@ class App extends Component {
     <button onClick={this.props.plusWithValue10} >Increment 10</button><br />
     <button onClick={this.props.minusWithValue}>Decrement 5</button><br />
     {/*<button onClick={this.props.incrementAgain}>Increment Again</button><br />*/}
-</div>
+<hr /></div>
     );
   }
 }
