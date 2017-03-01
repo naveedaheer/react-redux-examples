@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import './App.css';
-//import TextField from 'material-ui/TextField';
-//import Signup from "./Signup"
-import Header from "./Header"
-import RaisedButton from 'material-ui/RaisedButton';
-
-const style = {
-  margin: 12,
-};
+import { Link } from 'react-router';
 
 class Home extends Component {
-  render() {
-    return (
-     <div>
-        <Header />
-    <center>
-          <RaisedButton label="Receiver of Blood" disabled={false} style={style} primary={true} />
-           <RaisedButton label="Donor of Blood" disabled={false} style={style} primary={false} secondary={true} />
-</center>
-     </div>
-    )
-  }
+    render() {
+        return (
+            <div className="App">
+                <h1>Welcome to Aheer Blood Bank</h1>
+                <Link to="/AllUsers">All Users</Link>
+                <Link to="/MainPage">Main Page</Link>
+                {this.props.children}
+            </div>
+        );
+    }
 }
 
 export default Home;
