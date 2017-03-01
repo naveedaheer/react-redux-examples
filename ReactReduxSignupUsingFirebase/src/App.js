@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Layout from "./components/Layout"
 // import {aa00ff} from 'material-ui/styles/colors';
 // import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import Home from "./components/Home"
 
 // const muiTheme = getMuiTheme({
 //   palette: {
@@ -23,6 +24,7 @@ class App extends Component {
         <MuiThemeProvider
          //muiTheme={muiTheme} 
          > 
+
               <Layout />
         </MuiThemeProvider>
       </div>

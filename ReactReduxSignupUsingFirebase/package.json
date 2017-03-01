@@ -2,6 +2,7 @@
   "name": "ReactReduxSignupUsingFirebase",
   "version": "0.1.0",
   "private": true,
+   "author": "Naveed Aheer",
   "dependencies": {
     "firebase": "^3.6.10",
     "react": "15.4.2",

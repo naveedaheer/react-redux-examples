@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import './App.css';
 //import TextField from 'material-ui/TextField';
 //import Signup from "./Signup"
-//import Header from "./Header"
+import Header from "./Header"
 import RaisedButton from 'material-ui/RaisedButton';
 
 const style = {
@@ -14,11 +14,11 @@ class Home extends Component {
   render() {
     return (
      <div>
-        
-         <RaisedButton label="Default" style={{margin:12, backgroundColor: "green"}} />
-          <RaisedButton label="Register" disabled={false} style={style} primary={true} />
-           <RaisedButton label="Register" disabled={false} style={style} primary={true} />
-
+        <Header />
+    <center>
+          <RaisedButton label="Receiver of Blood" disabled={false} style={style} primary={true} />
+           <RaisedButton label="Donor of Blood" disabled={false} style={style} primary={false} secondary={true} />
+</center>
      </div>
     )
   }
