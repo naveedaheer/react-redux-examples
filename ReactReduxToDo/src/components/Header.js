@@ -11,7 +11,7 @@ class Layout extends Component {
     return (
       <div>
         
-        <AppBar Title="React-Redux ToDo App" style={{backgroundColor:"#aa00ff" , minHeight:50}} titleStyle={{lineHeight:50}} > <center><h1 style={{color:"white"}}>React-Redux ToDo App</h1></center> </ AppBar>
+        <AppBar Title="React-Redux ToDo App" style={{backgroundColor:"#aa00ff" , minHeight:50}} titleStyle={{lineHeight:50}} > <center><h1 style={{color:"white"}}>React-Redux ToDo App</h1></center><h4 style={{color:"white"}}>By Naveed Aheer</h4> </ AppBar>
         <Title />
       </div>
     )
