@@ -60,8 +60,9 @@ class Form extends Component {
   render() {
     return (
       <div>
-        <h4>Register</h4>
+        <h1>Register</h1>
         <form onSubmit={this.handleSubmit}>
+        
         <TextField
           ref="userFullName"
           floatingLabelText="Full Name" style={{ Color: "#4527A0" }} ref={(userFullName) => this.userFullName = userFullName} /><br />

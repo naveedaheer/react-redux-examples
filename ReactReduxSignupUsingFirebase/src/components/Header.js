@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 //import './App.css';
-import Title from "./Title" 
+//import Title from "./Title" 
 import AppBar from 'material-ui/AppBar';
 import {Link} from "react-router"
 //import RaisedButton from 'material-ui/RaisedButton';
@@ -19,7 +19,7 @@ class Layout extends Component {
                 <Link to="/login">Login </Link><br /><Link to="/signup"> Signup</Link>
 
         </ AppBar>
-        <Title />
+        
       </div>
     )
   }
