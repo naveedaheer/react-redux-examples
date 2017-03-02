@@ -26,6 +26,7 @@ class App extends Component {
          > 
 
               <Layout />
+               
         </MuiThemeProvider>
       </div>
     )
