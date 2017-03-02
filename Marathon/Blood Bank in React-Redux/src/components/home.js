@@ -5,14 +5,6 @@ import { Link } from 'react-router';
 import {DBfirebase} from "../database/DBfirebase"
 // import { List, ListItem } from 'material-ui/List';
 
-const styles = {
-    root: {
-        border: '2px outset',
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-};
-
 class Home extends Component {
     constructor(props) {
         super(props)
@@ -47,13 +39,14 @@ class Home extends Component {
                 <h1>Hello {this.state.name}</h1>
                 {(this.props.authReducer.user.type === 'donor') ?
 
-                    <div style={styles.root}>
-                        <h1>mani </h1>
+                    <div>
+                        <h1>Donor </h1>
                     </div>
                     :
                     <div>
                         <Link to="/donorList">Donors</Link>
                         <Link to="/aboutnested">About</Link>
+                        <Link to="/">Logout</Link>
                     </div>}
             </div>
         );

@@ -37,5 +37,10 @@ export class DBfirebase {
         return this.ref.child(path).push();
     }
 
+// static Logout(){
+//     return this.auth.signOut()
+//         console.log("Signed out");
+// }
+
 
 }
