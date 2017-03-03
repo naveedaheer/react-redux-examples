@@ -16,6 +16,9 @@ var styles = {
   backgroundColor: "transparent"
 },
 
+  tabs: {
+    width: '100%',
+  },
 }
 
 export default class HeaderInner extends React.Component {
