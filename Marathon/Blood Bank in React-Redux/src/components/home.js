@@ -34,11 +34,6 @@ class Home extends Component {
         return (
             <div >
                 <h1>Welcome {this.state.name}</h1>
-              <div>
-                        {/*<Link to="/donorList">RegisterDonor</Link>{"    "}
-                        <Link to="/aboutnested">About</Link>{"    "}
-                        <Link to="/">Logout</Link>{"    "}*/}
-                    </div>
                     <br /><br /><br /><br />
                     <div>
                         <center>
@@ -50,12 +45,12 @@ class Home extends Component {
         );
     }
 }
-const mapStateToProps = (state) => { // mapStateToProps ye iska apna function he
+const mapStateToProps = (state) => {
     return {
         authReducer: state
     }
 }
-const mapDispatchToProps = (dispatch) => { // mapDispatchToProps ye iska apna function he
+const mapDispatchToProps = (dispatch) => {
     return {
         Loggedin: (data) => {
             dispatch(Loggedin(data))

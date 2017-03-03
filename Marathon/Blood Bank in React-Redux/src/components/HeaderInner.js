@@ -31,23 +31,11 @@ export default class HeaderInner extends React.Component {
                     title="Aheer Blood Bank"
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                 >
+                <Link to="/home" >   <RaisedButton style={styles.buttonInAppBar} label="HOME" primary={false} /></Link>
                       <Link to="/home/registerDonor" >   <RaisedButton style={styles.buttonInAppBar} label="Register For Donate Blood" primary={false} /></Link>
                        <Link to="/home/donorList" >  <RaisedButton style={styles.buttonInAppBar} label="Need Blood" primary={false} /></Link>
 <Link to="/" >  <RaisedButton style={styles.buttonInAppBar} label="Logout" primary={false} /></Link>
-
-
                 </AppBar>
-
-                {/*<AppBar
-                style={styles.appBar}
-                style={{backgroundColor:"#26A69A" , minHeight:50}} titleStyle={{lineHeight:50}}
-                    title="Aheer Blood Bank"
-                    iconClassNameRight="muidocs-icon-navigation-expand-more"
-
-                >
-                                   
-                </AppBar>*/}
-
                 {this.props.children}
             </div>
         )

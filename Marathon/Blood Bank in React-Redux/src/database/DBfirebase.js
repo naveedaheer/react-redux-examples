@@ -10,12 +10,11 @@ var config = {
 firebase.initializeApp(config);
 export class DBfirebase {
 
-    static firebaseTimeStamp = firebase.database['ServerValue'].TIMESTAMP;
     static ref = firebase.database().ref();
     static storage = firebase.storage().ref();
     static auth = firebase.auth();
-
-    // constructor() { }
+    static refDonor = firebase.database().ref('donors');
+    
 
     static saveMultipath(multipath) {
         return this.ref.update(multipath);

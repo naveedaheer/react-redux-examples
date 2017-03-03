@@ -13,6 +13,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import Logout from "./components/logout"
 import HeaderOuter from "./components/HeaderOuter"
 import HeaderInner from "./components/HeaderInner"
+import Thankyou from "./components/Thankyou"
 
 injectTapEventPlugin();
 // import Nav from './components/nav.js';
@@ -35,6 +36,7 @@ ReactDOM.render((
                 <Route path="registerDonor" component={RegisterDonor}></Route>
                 <Route path="donorList" component={DonorList}></Route>
                 <Route path="logout" component={Login}></Route>
+                <Route path="thankyou" component={Thankyou}></Route>
                 
                 </Route>
             </Router>
