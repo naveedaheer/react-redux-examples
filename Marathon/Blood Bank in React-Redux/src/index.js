@@ -31,6 +31,7 @@ ReactDOM.render((
                 </Route>
                 
                 <Route path="/home" component={HeaderInner}>
+                <IndexRoute component={Home}> </IndexRoute>
                 <Route path="registerDonor" component={RegisterDonor}></Route>
                 <Route path="donorList" component={DonorList}></Route>
                 <Route path="logout" component={Login}></Route>

@@ -33,6 +33,8 @@ export default class HeaderInner extends React.Component {
                 >
                       <Link to="/home/registerDonor" >   <RaisedButton style={styles.buttonInAppBar} label="Register For Donate Blood" primary={false} /></Link>
                        <Link to="/home/donorList" >  <RaisedButton style={styles.buttonInAppBar} label="Need Blood" primary={false} /></Link>
+<Link to="/" >  <RaisedButton style={styles.buttonInAppBar} label="Logout" primary={false} /></Link>
+
 
                 </AppBar>
 

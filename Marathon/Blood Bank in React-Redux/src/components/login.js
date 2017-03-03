@@ -78,6 +78,7 @@ class SigninComponent extends React.Component {
                     <TextField
                         type="email"
                         hintText="Email"
+                         name="email"
                          floatingLabelText="Email"
                         onChange={this.props._inputHandler}
                         required
@@ -86,7 +87,7 @@ class SigninComponent extends React.Component {
                     <TextField
                         type="password"
                         hintText="password"
-
+                        name="password"           
                         floatingLabelText="Password"
                         onChange={this.props._inputHandler}
                         required
