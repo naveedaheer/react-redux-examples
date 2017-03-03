@@ -31,8 +31,8 @@ export default class HeaderInner extends React.Component {
                     title="Aheer Blood Bank"
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                 >
-                      <Link to="/registerDonor" >   <RaisedButton style={styles.buttonInAppBar} label="Register For Donate Blood" primary={false} /></Link>
-                       <Link to="/donorList" >  <RaisedButton style={styles.buttonInAppBar} label="Need Blood" primary={false} /></Link>
+                      <Link to="/home/registerDonor" >   <RaisedButton style={styles.buttonInAppBar} label="Register For Donate Blood" primary={false} /></Link>
+                       <Link to="/home/donorList" >  <RaisedButton style={styles.buttonInAppBar} label="Need Blood" primary={false} /></Link>
 
                 </AppBar>
 

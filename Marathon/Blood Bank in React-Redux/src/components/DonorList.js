@@ -6,7 +6,7 @@ class DonorList extends Component {
     render() {
         return (
             <div className="App">
-                <h1>Hello nested About</h1>
+                <h1>Donor List</h1>
                 
             </div>
 

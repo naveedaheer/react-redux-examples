@@ -42,6 +42,7 @@ class Home extends Component {
                     <br /><br /><br /><br />
                     <div>
                         <center>
+                            {this.props.children}
                         <img src="http://www.neomobile-jobs.com/wp-content/uploads/2014/07/blood-donation-700x314.jpg" alt="" />
                     </center>
                     </div>
