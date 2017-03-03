@@ -45,6 +45,7 @@ class RegisterDonor extends Component {
             age: this.state.age,
             bloodgroup: this.state.bloodgroup
         }
+        console.log(newUser)
         // {(this.state.type === 'donor') ? console.log("Me Donor hn")  : console.log("Me Recipient hn")}
         // console.log(this.state)
         DBfirebase.customAuth(newUser).then((user) => {
