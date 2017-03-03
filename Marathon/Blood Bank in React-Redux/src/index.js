@@ -6,11 +6,13 @@ import App from './App';
 import Home from './components/home';
 import SignUp from './components/signup';
 import Login from './components/login';
-import Donors from './components/donors';
-import NestedAbout from './components/aboutnestedroute';
+import RegisterDonor from './components/RegisterDonor';
+import DonorList from './components/DonorList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Logout from "./components/logout"
+import HeaderOuter from "./components/HeaderOuter"
+import HeaderInner from "./components/HeaderInner"
 
 injectTapEventPlugin();
 // import Nav from './components/nav.js';
@@ -21,13 +23,18 @@ ReactDOM.render((
     <MuiThemeProvider>
         <Provider store={store}>
             <Router history={browserHistory}>
+                
+                <Route path="/" component={HeaderOuter}>
                 <Route path="/login" component={Login}></Route>
-                <Route path="/donorList" component={Donors}></Route>
-                <Route path="/aboutnested" component={NestedAbout}></Route>
+                    <Route path="/app" component={App} />
+                    <IndexRoute component={SignUp}> </IndexRoute>
+                </Route>
+                
+                <Route path="/" component={HeaderInner}>
+                <Route path="/registerDonor" component={RegisterDonor}></Route>
+                <Route path="/donorList" component={DonorList}></Route>
                 <Route path="/logout" component={Login}></Route>
                 <Route path="/home" component={Home}> </Route>
-                <Route path="/" component={App}>
-                    <IndexRoute component={SignUp} />
                 </Route>
             </Router>
         </Provider>

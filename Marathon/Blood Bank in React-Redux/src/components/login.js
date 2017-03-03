@@ -40,7 +40,7 @@ class Login extends Component {
     }
     render() {
         return (
-            <div className="col-sm-6 col-sm-offset-3">
+            <div >
                 <SigninComponent _inputHandler={this.inputHandler} _submit={this.signin} />
             </div>
         )
@@ -70,19 +70,14 @@ class SigninComponent extends React.Component {
 
 
     render() {
-        const center = {
-            width: '90%',
-            margin: '0 auto'
-        }
         return (
-            <div style={center}>
+            <div >
                 <center>
                <h1>Login</h1>
                 <form onSubmit={this.props._submit}>
                     <TextField
                         type="email"
-                        hintText="email"
-                        name="email"
+                        hintText="Email"
                          floatingLabelText="Email"
                         onChange={this.props._inputHandler}
                         required
@@ -91,15 +86,15 @@ class SigninComponent extends React.Component {
                     <TextField
                         type="password"
                         hintText="password"
-                        name="password"
+
                         floatingLabelText="Password"
                         onChange={this.props._inputHandler}
                         required
-                        /><br />
-                    <RaisedButton type="submit" label="Sign in" primary={true} />
-                </form>
-                <Link to="/" >Create Account</Link>
+                        /><br /><br />
+                    <RaisedButton type="submit" label="Sign in" primary={true} /><br />
+               <br /><br />OR<br /><br /><Link to="/">Create Account<br /><br /><RaisedButton label="Signup" primary={false} /></Link>
                 
+                </form>
                 </center>
             </div>
         )

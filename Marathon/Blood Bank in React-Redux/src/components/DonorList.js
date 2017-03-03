@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 
-class NestedAbout extends Component {
+class DonorList extends Component {
     render() {
         return (
             <div className="App">
@@ -17,4 +17,4 @@ class NestedAbout extends Component {
     }
 }
 
-export default NestedAbout;
+export default DonorList;

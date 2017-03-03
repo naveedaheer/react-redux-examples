@@ -16,10 +16,10 @@ class Home extends Component {
     componentWillMount() {
         let key = localStorage.getItem('currentUser')
         DBfirebase.ref.child(`/users`).on("child_added", (snapshot) => {
-            if (snapshot.val().type === 'donor') {
+            // if (snapshot.val().type === 'donor') {
 
-            console.log(snapshot.val())
-            }
+            // console.log(snapshot.val())
+            // }
         })
         DBfirebase.ref.child(`/users/${key}`).on("value", (snapshot) => {
             if (snapshot.val()) {
@@ -31,24 +31,21 @@ class Home extends Component {
         })
     }
     render() {
-        setInterval(() => {
-            (this.props.authReducer.user.type === 'donor') ? this.setState(<h1></h1>) : <h1></h1>
-        }, 200)
         return (
-            <div className="App">
-                <h1>Hello {this.state.name}</h1>
-                {(this.props.authReducer.user.type === 'donor') ?
-
-                    <div>
-                        <h1>Donor </h1>
+            <div >
+                <h1>Welcome {this.state.name}</h1>
+              <div>
+                        {/*<Link to="/donorList">RegisterDonor</Link>{"    "}
+                        <Link to="/aboutnested">About</Link>{"    "}
+                        <Link to="/">Logout</Link>{"    "}*/}
                     </div>
-                    :
+                    <br /><br /><br /><br />
                     <div>
-                        <Link to="/donorList">Donors</Link>
-                        <Link to="/aboutnested">About</Link>
-                        <Link to="/">Logout</Link>
-                    </div>}
-            </div>
+                        <center>
+                        <img src="http://www.neomobile-jobs.com/wp-content/uploads/2014/07/blood-donation-700x314.jpg" alt="" />
+                    </center>
+                    </div>
+                    </div>
         );
     }
 }

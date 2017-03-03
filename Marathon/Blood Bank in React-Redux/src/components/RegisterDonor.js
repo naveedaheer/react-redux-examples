@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 
-class Donors extends Component {
+class RegisterDonor extends Component {
     render() {
         return (
             <div className="App">
-                <h1>Hello Donors</h1>
+                <h1>Register Donor</h1>
             </div>
 
 
@@ -16,4 +16,4 @@ class Donors extends Component {
     }
 }
 
-export default Donors;
+export default RegisterDonor;

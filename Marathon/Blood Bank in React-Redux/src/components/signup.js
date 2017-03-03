@@ -48,9 +48,10 @@ class Register extends Component {
     }
     render() {
         return (
-            <div className='commentBox'>
+            <div ><center>
                 <SignupComponent signUpState={this.state} _inputHandler={this.inputHandler} _submit={this.submit} />
-                Already have an account? <br /><Link to="/login"><RaisedButton label="Login" primary={false} /></Link>
+                Already have an account? <br /><br /><Link to="/login"><RaisedButton label="Login" primary={false} /></Link>
+            </center>
             </div>
         );
     }
@@ -80,6 +81,7 @@ class SignupComponent extends React.Component {
         
         return (
             <div >
+              
                 <h1>Register</h1>
                 <form onSubmit={this.props._submit} >
                     <TextField
@@ -106,9 +108,10 @@ class SignupComponent extends React.Component {
                         value={this.props.signUpState.password}
                         floatingLabelText="Password"
                         onChange={this.props._inputHandler}
-                        /><br />
-                    <RaisedButton type="submit" label="Sign up" primary={true} /> <br />
+                        /><br /><br />
+                    <RaisedButton type="submit" label="Sign up" primary={true} /> <br /><br />
                 </form>
+                
             </div>
         )
     }
