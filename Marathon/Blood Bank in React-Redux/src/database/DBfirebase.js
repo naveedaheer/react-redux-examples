@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 
 var config = {
     apiKey: "AIzaSyANVd2tCthuOMltArH-QO3FV3TIhaAd36Q",
@@ -10,12 +10,11 @@ var config = {
 firebase.initializeApp(config);
 export class DBfirebase {
 
-    static firebaseTimeStamp = firebase.database['ServerValue'].TIMESTAMP;
     static ref = firebase.database().ref();
     static storage = firebase.storage().ref();
     static auth = firebase.auth();
 
-    // constructor() { }
+    static refDonors = firebase.database().ref('donors');
 
     static saveMultipath(multipath) {
         return this.ref.update(multipath);
@@ -32,6 +31,7 @@ export class DBfirebase {
     static addNewUser(user) {
         return this.ref.child(user).set();
     } //AuthNewUser
+
 
     static getPushRef(path) {
         return this.ref.child(path).push();
