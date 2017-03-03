@@ -38,7 +38,7 @@ class RegisterDonor extends Component {
             bloodgroup: this.state.bloodgroup
         }
         console.log(newUser)
-        DBfirebase.refDonor.push(newUser);
+        DBfirebase.refDonor.push({newUser});
 
     }
     render() {
@@ -51,18 +51,18 @@ class RegisterDonor extends Component {
     }
 }
 
-// RegisterDonor.contextTypes = {
-//     router: React.PropTypes.object.isRequired
-// }
+RegisterDonor.contextTypes = {
+    router: React.PropTypes.object.isRequired
+}
 
 
 class SignupComponent extends React.Component {
 
-//  state = {
-//     value: 1,
-//   };
+ state = {
+    value: 1,
+  };
 
-//   handleChange = (event, index, value) => this.setState({value});
+  handleChange = (event, index, value) => this.setState({value});
 
     render() {
         

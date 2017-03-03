@@ -16,10 +16,7 @@ class Home extends Component {
     componentWillMount() {
         let key = localStorage.getItem('currentUser')
         DBfirebase.ref.child(`/users`).on("child_added", (snapshot) => {
-            // if (snapshot.val().type === 'donor') {
-
-            // console.log(snapshot.val())
-            // }
+            
         })
         DBfirebase.ref.child(`/users/${key}`).on("value", (snapshot) => {
             if (snapshot.val()) {
