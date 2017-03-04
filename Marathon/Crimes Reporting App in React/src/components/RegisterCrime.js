@@ -37,7 +37,7 @@ class RegisterCrime extends Component {
            crime: this.state.crime,
         }
         console.log(crime)
-        DBfirebase.refDonor.push({crime});
+        DBfirebase.refCrime.push({crime});
 
     }
     render() {
