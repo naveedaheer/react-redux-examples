@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 import DBfirebase from "../database/DBfirebase"
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
 class DonorList extends Component {
     constructor(){
@@ -35,20 +36,43 @@ class DonorList extends Component {
         return (
             <div >
                 <h1>Donor List</h1>
-                {this.state.donors.map((m,i)=>{
+             
+                                 
+                      <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHeaderColumn><b>Blood Group</b></TableHeaderColumn>
+        <TableHeaderColumn>Mobile </TableHeaderColumn>
+        <TableHeaderColumn>Full Name  </TableHeaderColumn>
+        <TableHeaderColumn>Age </TableHeaderColumn>
+        <TableHeaderColumn>Address </TableHeaderColumn> 
+      </TableRow>
+    </TableHeader>
+  </Table>
+  
+
+{this.state.donors.map((m,i)=>{
                     return(
                         
-                    <table>
-                        <br />
-                        <tr><td>Full Name:{m.fullname}</td></tr>
-                        <tr><td>Mobile:{m.mobile}</td></tr>
-                        <tr><td>Age:{m.age}</td></tr>
-                        <tr><td>Address:{m.address}</td></tr>
-                        <tr><td>Blood Group: {m.bloodgroup}</td></tr>
-                    </table>)
+                      <Table>
+
+    <TableBody>
+      <TableRow>
+        <TableRowColumn> {m.bloodgroup}</TableRowColumn>
+        <TableRowColumn>{m.mobile}</TableRowColumn>
+        <TableRowColumn>{m.fullname}</TableRowColumn>
+        <TableRowColumn>{m.age}</TableRowColumn>
+        <TableRowColumn>{m.address}</TableRowColumn>
+      </TableRow>
+    </TableBody>
+  </Table>
+  
+  
+  )
                 })
                   
                 }
+
             </div>
         );
     }

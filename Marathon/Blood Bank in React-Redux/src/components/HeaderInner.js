@@ -1,7 +1,8 @@
 import React from "react"
 import AppBar from 'material-ui/AppBar';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from "react-router"
+import {Link, browserHistory} from "react-router"
+import * as firebase from "firebase"
 
 var styles = {
   appBar: {
@@ -22,6 +23,12 @@ var styles = {
 }
 
 export default class HeaderInner extends React.Component {
+    
+logoutBtn(){
+firebase.auth().signOut();
+browserHistory.push("/");
+}
+
     render() {
         return (
             <div>
@@ -34,7 +41,7 @@ export default class HeaderInner extends React.Component {
                 <Link to="/home" >   <RaisedButton style={styles.buttonInAppBar} label="HOME" primary={false} /></Link>
                       <Link to="/home/registerDonor" >   <RaisedButton style={styles.buttonInAppBar} label="Register For Donate Blood" primary={false} /></Link>
                        <Link to="/home/donorList" >  <RaisedButton style={styles.buttonInAppBar} label="Need Blood" primary={false} /></Link>
-<Link to="/" >  <RaisedButton style={styles.buttonInAppBar} label="Logout" primary={false} /></Link>
+ <RaisedButton style={styles.buttonInAppBar} onClick={this.logoutBtn.bind(this)} label="Logout" primary={false} />
                 </AppBar>
                 {this.props.children}
             </div>
