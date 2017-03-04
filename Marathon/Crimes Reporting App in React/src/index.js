@@ -16,6 +16,7 @@ import HeaderInner from "./components/HeaderInner"
 import Thankyou from "./components/Thankyou"
 import Crimes from "./components/Crimes"
 import MissingPeople from "./components/MissingPeople"
+import Complaints from "./components/complaints"
 
 injectTapEventPlugin();
 
@@ -39,7 +40,7 @@ ReactDOM.render((
                 <Route path="crimes" component={Crimes} />
                     <Route path="missingpeople" component={MissingPeople} />
                 <Route path="logout" component={Login}></Route>
-                <Route path="thankyou" component={Thankyou}></Route>
+                <Route path="complaints" component={Complaints}></Route>
                 
                 </Route>
 

@@ -7,7 +7,7 @@ import * as firebase from "firebase"
 var styles = {
   appBar: {
    // backgroundColor: '#009688',
-    backgroundColor: '#E53935',
+    backgroundColor: '#5C6BC0',
      minHeight:50,
      //height:300
   },

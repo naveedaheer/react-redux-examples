@@ -6,7 +6,7 @@ export default class Complaints extends Component {
     render() {
         return (
             <div >
-                <h1>Missing People Details</h1>
+                <h1>Complaints</h1>
                
             </div>
         );
