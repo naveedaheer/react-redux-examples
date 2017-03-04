@@ -27,17 +27,17 @@ ReactDOM.render((
             <Router history={browserHistory}>
                 
                 <Route path="/" component={HeaderOuter}>
-                <Route path="/login" component={Login}></Route>
-                    <Route path="/app" component={App} />
-                    <Route path="/crimes" component={Crimes} />
-                    <Route path="/missingpeople" component={App} />
+                <Route path="login" component={Login}></Route>
+                <Route path="signup" component={SignUp}></Route>
+                    <Route path="crimes" component={Crimes} />
+                    <Route path="missingpeople" component={MissingPeople} />
                     <IndexRoute component={MissingPeople}> </IndexRoute>
                 </Route>
                 
                 <Route path="/home" component={HeaderInner}>
                 <IndexRoute component={Home}> </IndexRoute>
-                <Route path="registerDonor" component={RegisterDonor}></Route>
-                <Route path="donorList" component={DonorList}></Route>
+                <Route path="crimes" component={Crimes} />
+                    <Route path="missingpeople" component={MissingPeople} />
                 <Route path="logout" component={Login}></Route>
                 <Route path="thankyou" component={Thankyou}></Route>
                 
