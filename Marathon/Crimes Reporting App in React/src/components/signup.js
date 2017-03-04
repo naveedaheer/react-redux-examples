@@ -32,7 +32,7 @@ class Register extends Component {
             email: this.state.email,
             password: this.state.password
         }
-        // {(this.state.type === 'donor') ? console.log("Me Donor hn")  : console.log("Me Recipient hn")}
+        
         // console.log(this.state)
         DBfirebase.customAuth(newUser).then((user) => {
             multipath[`users/${user.uid}`] = newUser;

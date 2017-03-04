@@ -35,7 +35,7 @@ class Home extends Component {
                     <div>
                         <center>
                             {this.props.children}
-                        <img src="https://bdn-data.s3.amazonaws.com/uploads/2009/06/1246121005_e6fd.jpg" alt="" />
+                        <img src="https://localtvkstu.files.wordpress.com/2015/05/missing-person-generic.jpg?quality=85&strip=all&w=1200" alt="" />
                     </center>
                     </div>
                     </div>
@@ -55,22 +55,3 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-                        // <List>
-                        //     <ListItem
-                        //         primaryText="Name"
-                        //         secondaryText={this.props.authReducer.user.fullname + " " + this.props.authReducer.user.lastname}
-                        //         />
-                        //     <ListItem
-                        //         primaryText="Email"
-                        //         secondaryText={this.props.authReducer.user.email}
-                        //         />
-                        //     <ListItem
-                        //         primaryText="Age"
-                        //         secondaryText={this.props.authReducer.user.age}
-                        //         />
-                        //     <ListItem
-                        //         primaryText="Blood Group"
-                        //         secondaryText={this.props.authReducer.user.blood}
-                        //         />
-                        // </List>

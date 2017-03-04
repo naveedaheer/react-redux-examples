@@ -6,7 +6,6 @@ import App from './App';
 import Home from './components/home';
 import SignUp from './components/signup';
 import Login from './components/login';
-import RegisterDonor from './components/RegisterDonor';
 import DonorList from './components/DonorList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -17,6 +16,7 @@ import Thankyou from "./components/Thankyou"
 import Crimes from "./components/Crimes"
 import MissingPeople from "./components/MissingPeople"
 import Complaints from "./components/complaints"
+import RegisterCrime from "./components/RegisterCrime"
 
 injectTapEventPlugin();
 
@@ -38,6 +38,7 @@ ReactDOM.render((
                 <Route path="/home" component={HeaderInner}>
                 <IndexRoute component={Home}> </IndexRoute>
                 <Route path="crimes" component={Crimes} />
+                 <Route path="registercrime" component={RegisterCrime} />
                     <Route path="missingpeople" component={MissingPeople} />
                 <Route path="logout" component={Login}></Route>
                 <Route path="complaints" component={Complaints}></Route>
