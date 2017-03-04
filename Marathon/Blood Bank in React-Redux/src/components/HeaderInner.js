@@ -26,7 +26,7 @@ export default class HeaderInner extends React.Component {
     
 logoutBtn(){
 firebase.auth().signOut();
-browserHistory.push("/");
+browserHistory.replace("/login");
 }
 
     render() {

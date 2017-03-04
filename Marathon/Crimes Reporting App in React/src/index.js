@@ -6,7 +6,6 @@ import App from './App';
 import Home from './components/home';
 import SignUp from './components/signup';
 import Login from './components/login';
-import DonorList from './components/DonorList';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Logout from "./components/logout"
