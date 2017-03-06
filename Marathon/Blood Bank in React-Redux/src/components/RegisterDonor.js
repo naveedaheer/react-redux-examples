@@ -8,8 +8,9 @@ import TextField from 'material-ui/TextField';
 import AppBar from 'material-ui/AppBar';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import * as mui from 'material-ui';
 
-class RegisterDonor extends Component {
+class Register extends Component {
     constructor() {
         super();
         this.state = {
@@ -30,15 +31,31 @@ class RegisterDonor extends Component {
     submit(e) {
         e.preventDefault();
         let multipath = {};
-        let newUser = {
+        let donor = {
             fullname: this.state.fullname,
             mobile: this.state.mobile,
             address: this.state.address,
             age: this.state.age,
             bloodgroup: this.state.bloodgroup
         }
-        console.log(newUser)
-        DBfirebase.refDonor.push({newUser});
+
+//   DBfirebase.customAuth(newUser).then((user) => {
+//             multipath[`users/${user.uid}`] = newUser;
+//             DBfirebase.saveMultipath(multipath)
+//             newUser['uid'] = this.state.uid
+//             this.props.signUp(this.state)
+//             localStorage.setItem('currentUser', user.uid);
+//             this.context.router.push({
+//                 pathname: "/donorList"
+//             })
+//         }).catch((error) => alert(error.message))
+
+     
+       DBfirebase.refDonor.push({donor});
+       this.context.router.push({
+                pathname: "/home/donorList"
+            })
+   console.log(donor)
 
     }
     render() {
@@ -51,18 +68,18 @@ class RegisterDonor extends Component {
     }
 }
 
-RegisterDonor.contextTypes = {
+Register.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
 
 
 class SignupComponent extends React.Component {
 
- state = {
-    value: 1,
-  };
+//  state = {
+//     value: 1,
+//   };
 
-  handleChange = (event, index, value) => this.setState({value});
+//   handleChange = (event, index, value) => this.setState({value});
 
     render() {
         
@@ -79,6 +96,7 @@ class SignupComponent extends React.Component {
                         onChange={this.props._inputHandler}
                         /><br />
 
+ 
                     <TextField
                         type="text"
                         hintText="Mobile"
@@ -106,7 +124,7 @@ class SignupComponent extends React.Component {
                         /><br />
                         <br />
 
-                         <TextField
+                         {/*<TextField
                         type="text"
                         hintText="Blood Group"
                         name="bloodgroup"
@@ -114,24 +132,43 @@ class SignupComponent extends React.Component {
                         floatingLabelText="Blood Group"
                         onChange={this.props._inputHandler}
                         /><br />
-                        <br />
+                        <br />*/}
 {/*<SelectField
           floatingLabelText="Blood Group"
-          value={this.state.value}
-          onChange={this.handleChange}
+          //value={this.state.value}
+          value={this.props.signUpState.bloodgroup}
+          onChange={this.props._inputHandler}
           autoWidth={true}
           name="bloodgroup"
         >
-          <MenuItem value={1} primaryText=" O +" />
-          <MenuItem value={2} primaryText=" O -" />
-          <MenuItem value={3} primaryText=" A +" />
-          <MenuItem value={4} primaryText=" A -" />
-          <MenuItem value={5} primaryText=" B +" />
-          <MenuItem value={6} primaryText=" B -" />
-          <MenuItem value={7} primaryText=" AB +" />
-          <MenuItem value={8} primaryText=" AB -" />
+          <MenuItem value={1} primaryText=" O+" />
+          <MenuItem value={2} primaryText=" O-" />
+          <MenuItem value={3} primaryText=" A+" />
+          <MenuItem value={4} primaryText=" A-" />
+          <MenuItem value={5} primaryText=" B+" />
+          <MenuItem value={6} primaryText=" B-" />
+          <MenuItem value={7} primaryText=" AB+" />
+          <MenuItem value={8} primaryText=" AB-" />
          
         </SelectField> <br /><br />*/}
+
+        <select 
+                        name="bloodgroup"
+                        value={this.props.signUpState.blood}
+                        required
+                        onChange={this.props._inputHandler}>
+                        <option>Blood Type   </option>
+                        <option value="A+">A+   </option>
+                        <option value="B+">B+   </option>
+                        <option value="O+">O+   </option>
+                        <option value="AB+">AB+</option>
+                        <option value="A-">A-   </option>
+                        <option value="B-">B-   </option>
+                        <option value="O-">O-   </option>
+                        <option value="AB-">AB-</option>
+                    </select>
+                    <br />
+                    <br />
 
                  <RaisedButton type="submit" label="Register as Donor" primary={false} secondary={true} /> <br /><br />
                 </form>
@@ -140,10 +177,23 @@ class SignupComponent extends React.Component {
         )
     }
 }
-// SignupComponent.PropTypes = {
-//     _inputHandler: React.PropTypes.func.isRequired,
-//     _submit: React.PropTypes.func.isRequired
+SignupComponent.PropTypes = {
+    _inputHandler: React.PropTypes.func.isRequired,
+    _submit: React.PropTypes.func.isRequired
 
-// }
+}
 
-export default RegisterDonor;
+
+const mapStateToProps = (state) => { // mapStateToProps ye iska apna function he
+    return {
+        authReducer: state
+    }
+}
+const mapDispatchToProps = (dispatch) => { // mapDispatchToProps ye iska apna function he
+    return {
+        signUp: (data) => {
+            dispatch(signUp(data))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

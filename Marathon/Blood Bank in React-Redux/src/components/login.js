@@ -93,7 +93,7 @@ class SigninComponent extends React.Component {
                         required
                         /><br /><br />
                     <RaisedButton type="submit" label="Sign in" primary={true} /><br />
-               <br /><br />OR<br /><br /><Link to="/">Create Account<br /><br /><RaisedButton label="Signup" primary={false} /></Link>
+               <br /><br />OR<br /><br />Create Account<Link to="/"><br /><br /><RaisedButton label="Signup" primary={false} /></Link>
                 
                 </form>
                 </center>
