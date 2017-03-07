@@ -19,3 +19,11 @@ export function Loggedin(user) {
     }
 }
 
+export function FindDonors(user) {
+    // console.log("Auth action ", user)
+    return {
+        type: "find",
+        value: user
+    }
+}
+

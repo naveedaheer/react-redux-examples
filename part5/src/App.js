@@ -4,7 +4,9 @@ import './App.css';
 import {connect} from "react-redux"
 
 function mapStateToProps(state) {
+    console.log("mapStateToProps", state);
     return {
+        
         // counter - this will be component's property counter and can be accessed
         // as this.props.counter
         // state - this will be the state of redux, whatever value we return from

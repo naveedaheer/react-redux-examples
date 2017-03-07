@@ -16,9 +16,9 @@ import {Provider} from "react-redux"
 // store.dispatch({ type: 'INC' })
 // store.dispatch({ type: 'DEC' })
 
-function handleIncrement(){
-  store.dispatch({type: "INC"})
-} 
+// function handleIncrement(){
+//   store.dispatch({type: "INC"})
+// } 
 
 ReactDOM.render(
 
@@ -26,12 +26,12 @@ ReactDOM.render(
   <Provider store={store}>
   <div>
     <App/>
-    <div>
+    {/*<div>
       <h3>Events in Index.js</h3>
       <button onClick={()=>store.dispatch({type: "INC"})} > PLUS 1</button><br />
       <button onClick={()=>store.dispatch({type: "DEC"}) } > MINUS 1 </button><br />
       <button onClick={handleIncrement} > PLUS with Handler</button><br />
-    </div>
+    </div>*/}
   </div>
   </Provider>
   ,

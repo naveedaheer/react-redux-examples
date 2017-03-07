@@ -6,35 +6,72 @@ import DBfirebase from "../database/DBfirebase"
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import Paper from 'material-ui/Paper';
+import * as mui from "material-ui"
+import { FindDonors } from '../store/action/auth'
 
+
+const style = {
+  //height: 100,
+  //width: 100,
+  margin: 20,
+  textAlign: 'center',
+  // display: 'inline-block',
+    display: 'block-inline',
+  height: 'auto',
+  width: 'auto',
+  padding: 20
+  
+};
 
   
 class DonorList extends Component {
     constructor(){
         super();
-
-
-
-
         this.state = {
-            donors: []
+            donors: [],
+            arr: []
         }
-    }
 
-Testing(){
-const rootRef = firebase.database().ref();
-    const bloodRef = rootRef.child('donors').orderByChild('bloodgroup').equalTo('A+').on('value',(data)=>{
- let obj = data.val();
-var donors = [];  
- for(var prop in obj){
-                donors.push(obj[prop].donor);
+         this.onSearch = this.onSearch.bind(this)
+    }
+    //  selectedblood={sb:this.refs.selectedBlood.value}
+    //  console.log("selected blood", selectedblood)
+
+     onSearch(e) {
+        let _self = this;
+        e.preventDefault()
+        //let ref = DBfirebase.ref.child("/donors");
+        let ref = firebase.database().ref().child('/donors');
+        _self.arr = [];
+        ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
+         // console.log("selected blood", ref.orderByChild(this.refs.selectedBlood.value)
+            snapshot.forEach(childSnapshot => {
+                _self.arr.push(childSnapshot.val())
+            })
+            _self.props.findDonor(_self.arr)
+            _self.setState({
+                arr: _self.props.storeReducer.user
+                
+            })
+        });
+  }
+
+
+// Testing(){
+// const rootRef = firebase.database().ref();
+//     const bloodRef = rootRef.child('donors').orderByChild('bloodgroup').equalTo('A+').on('value',(data)=>{
+//  let obj = data.val();
+// var donors = [];  
+//  for(var prop in obj){
+//                 donors.push(obj[prop].donor);
                
-                // this.setState({
-                //     donors: donors
-                // })
-                  console.log(donors);
-            }
-    });
+//                 // this.setState({
+//                 //     donors: donors
+//                 // })
+//                   console.log(donors);
+//             }
+//     });
 //     const filter = bloodRef.on('value', (data)=>{
 //          let obj = data.val();
 // var donors = [];
@@ -48,25 +85,25 @@ var donors = [];
 //             }
 
 // }
-    }
+   // }
 
   
-    // componentWillMount(){
-    //     var donors = [];
-    //     firebase.database().ref('/donors/').on('value', (data) => {
-    //         let obj = data.val();
+    componentWillMount(){
+        var donors = [];
+        firebase.database().ref('/donors/').on('value', (data) => {
+            let obj = data.val();
 
-    //         for(var prop in obj){
-    //             donors.push(obj[prop].donor);
+            for(var prop in obj){
+                donors.push(obj[prop].donor);
                
-    //             this.setState({
-    //                 donors: donors
-    //             })
-    //              console.log(this.state.donors);
-    //         }
+                this.setState({
+                    donors: donors
+                })
+                 console.log(this.state.donors);
+            }
 
-    //     })
-    // }
+        })
+    }
 
 
 
@@ -81,10 +118,12 @@ var donors = [];
             <div >
                 <h1>Donor List</h1>
             <center> 
+               <form onSubmit={this.onSearch}>
                  <select 
                         name="bloodgroup"
                         //value={this.props.signUpState.bloodgroup}
                         required
+                        ref="selectedBlood"
                        // onChange={this.props._inputHandler}
                        >
                         <option>Blood Type   </option>
@@ -97,9 +136,11 @@ var donors = [];
                         <option value="O-">O-   </option>
                         <option value="AB-">AB-</option>
                     </select>
+                    <button onClick={this.onSearch} type="submit" > Find </button>
+                      </form>
                     <br />
                     <br />
-                    <button onClick={this.Testing} > Find </button>
+                    
             {/*<SelectField
           floatingLabelText="Blood Group"
           value={this.state.value}
@@ -118,7 +159,7 @@ var donors = [];
          
         </SelectField> <br /><br />*/}
                     </ center>           
-                      <Table>
+                         {/*<Table>
     <TableHeader>
       <TableRow>
         <TableHeaderColumn><b>Blood Group</b></TableHeaderColumn>
@@ -128,14 +169,25 @@ var donors = [];
         <TableHeaderColumn>Address </TableHeaderColumn> 
       </TableRow>
     </TableHeader>
-  </Table>
+  </Table>*/}
   
 
 {this.state.donors.map((m,i)=>{
                     return(
-                        
-                      <Table>
+                      <div>
+                    
+                        <Paper style={style} zDepth={5} > 
+                        >Bloog: {m.bloodgroup}<br />
+                        >Mobile: {m.mobile}<br /> 
+                        >Name: {m.fullname}<br />
+                        >Age: {m.age}<br />
+                        >Address: {m.address}<br />
+                        <mui.RaisedButton type="submit" label="Request Blood" secondary={true} />
+                        </Paper>
 
+                      
+                     </div>
+                    /*<Table>
     <TableBody>
       <TableRow>
         <TableRowColumn> {m.bloodgroup}</TableRowColumn>
@@ -145,9 +197,8 @@ var donors = [];
         <TableRowColumn>{m.address}</TableRowColumn>
       </TableRow>
     </TableBody>
-  </Table>
-  
-  
+  </Table>*/
+     
   )
                 })
                   
@@ -155,6 +206,21 @@ var donors = [];
 
             </div>
         );
+    }
+}
+
+const mapStateToProps = (state) => { // mapStateToProps ye iska apna function he
+     console.log(state.UserReducer)
+    return {
+        storeReducer: state.UserReducer
+    }
+}
+const mapDispatchToProps = (dispatch) => { // mapDispatchToProps ye iska apna function he
+    return {
+        findDonor: (data) => {
+            console.log(data)
+            dispatch(FindDonors(data))
+        }
     }
 }
 

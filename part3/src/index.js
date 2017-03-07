@@ -40,7 +40,6 @@ function handleIncrement(){
 } 
 
 ReactDOM.render(
-
   //Wraping up in Provider
   <Provider store={store}>
   <div>
