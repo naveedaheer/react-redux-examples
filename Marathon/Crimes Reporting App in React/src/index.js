@@ -16,6 +16,9 @@ import Crimes from "./components/Crimes"
 import MissingPeople from "./components/MissingPeople"
 import Complaints from "./components/complaints"
 import RegisterCrime from "./components/RegisterCrime"
+import CrimeParent from "./components/crimeParent"
+import RegisterMissingPeople from "./components/RegisterMissingpeople"
+import MissingPeopleParent from "./components/MissingPeopleParent"
 
 injectTapEventPlugin();
 
@@ -35,10 +38,22 @@ ReactDOM.render((
                 </Route>
                 
                 <Route path="/home" component={HeaderInner}>
-                <IndexRoute component={Home}> </IndexRoute>
+                <Route component={Home}> </Route>
+                <IndexRoute component={MissingPeopleParent}> </IndexRoute>
+
+                <Route path="crimeparent" component={CrimeParent} >
+                <IndexRoute component={Crimes}> </IndexRoute>
                 <Route path="crimes" component={Crimes} />
-                 <Route path="registercrime" component={RegisterCrime} />
-                    <Route path="missingpeople" component={MissingPeople} />
+                <Route path="registercrime" component={RegisterCrime} />
+                </Route>
+
+                <Route path="missingpeopleparent" component={MissingPeopleParent} >
+                <IndexRoute component={MissingPeople}> </IndexRoute>
+                <Route path="missingpeople" component={MissingPeople} />
+                <Route path="registermissingpeople" component={RegisterMissingPeople} />
+                </Route>
+
+                <Route path="missingpeople" component={MissingPeople} />
                 <Route path="logout" component={Login}></Route>
                 <Route path="complaints" component={Complaints}></Route>
                 

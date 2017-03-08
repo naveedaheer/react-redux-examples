@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router';
 import {DBfirebase} from "../database/DBfirebase"
 // import { List, ListItem } from 'material-ui/List';
+import MissingPeopleParent from "./MissingPeopleParent"
 
 class Home extends Component {
     constructor(props) {
@@ -35,8 +36,7 @@ class Home extends Component {
                     <div>
                         <center>
                             {this.props.children}
-                        <img src="https://localtvkstu.files.wordpress.com/2015/05/missing-person-generic.jpg?quality=85&strip=all&w=1200" alt="" />
-                    </center>
+                                           </center>
                     </div>
                     </div>
         );
