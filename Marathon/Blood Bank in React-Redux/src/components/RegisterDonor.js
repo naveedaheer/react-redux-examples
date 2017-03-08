@@ -51,7 +51,7 @@ class Register extends Component {
 //         }).catch((error) => alert(error.message))
 
      
-       DBfirebase.refDonor.push({donor});
+       DBfirebase.refDonor.push(donor);
        this.context.router.push({
                 pathname: "/home/donorList"
             })

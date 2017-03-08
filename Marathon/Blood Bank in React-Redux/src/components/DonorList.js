@@ -9,6 +9,7 @@ import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 import * as mui from "material-ui"
 import { FindDonors } from '../store/action/auth'
+import { connect } from 'react-redux'
 
 
 const style = {
@@ -24,6 +25,16 @@ const style = {
   
 };
 
+     const table = {
+  height: 190,
+  width: 280,
+  margin: 20,
+  padding: 20,
+  textAlign: 'center',
+  display: 'inline-block',
+   background : 'wheat',
+   color : '#009999'
+};
   
 class DonorList extends Component {
     constructor(){
@@ -38,22 +49,59 @@ class DonorList extends Component {
     //  selectedblood={sb:this.refs.selectedBlood.value}
     //  console.log("selected blood", selectedblood)
 
-     onSearch(e) {
-        let _self = this;
-        e.preventDefault()
-        //let ref = DBfirebase.ref.child("/donors");
-        let ref = firebase.database().ref().child('/donors');
-        _self.arr = [];
-        ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
-         // console.log("selected blood", ref.orderByChild(this.refs.selectedBlood.value)
-            snapshot.forEach(childSnapshot => {
-                _self.arr.push(childSnapshot.val())
-            })
-            _self.props.findDonor(_self.arr)
-            _self.setState({
-                arr: _self.props.storeReducer.user
+//      onSearch(e) {
+//         let _self = this;
+//         e.preventDefault()
+//        // let ref = DBfirebase.ref.child("/donors");
+//         let ref = firebase.database().ref().child('/donors');
+//         _self.arr = [];
+//         ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
+//        //   ref.orderByChild('donor').equalTo("A+").once('value', function (snapshot) {
+
+//          // console.log("selected blood", ref.orderByChild(this.refs.selectedBlood.value)
+//             snapshot.forEach(childSnapshot => {
+//                 _self.arr.push(childSnapshot.val())
+//             })
+//             _self.props.findDonor(_self.arr)
+//             _self.setState({
+//                 arr: _self.props.storeReducer.user
                 
-            })
+//             })
+//         });
+//   }
+
+  
+  onSearch(e) {
+      var donors = [];
+        //let _self = this;
+        e.preventDefault()
+       // let ref = DBfirebase.ref.child("/donors");
+        let ref = firebase.database().ref().child('/donors');
+       // _self.arr = [];
+        ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', (data) => {
+       //   ref.orderByChild('donor').equalTo("A+").once('value', function (snapshot) {
+
+         // console.log("selected blood", ref.orderByChild(this.refs.selectedBlood.value)
+             let obj = data.val();
+console.log(obj)
+for(var prop in obj){
+                donors.push(obj[prop].donor);
+               
+                this.setState({
+                    arr: donors
+                })
+                 console.log(this.state.donors);
+            }
+
+
+            // snapshot.forEach(childSnapshot => {
+            //     _self.arr.push(childSnapshot.val())
+            // })
+            // _self.props.findDonor(_self.arr)
+            // _self.setState({
+            //     arr: _self.props.storeReducer.user
+                
+          //  })
         });
   }
 
@@ -89,20 +137,22 @@ class DonorList extends Component {
 
   
     componentWillMount(){
-        var donors = [];
-        firebase.database().ref('/donors/').on('value', (data) => {
-            let obj = data.val();
+        // var donors = [];
+        // firebase.database().ref('/donors/').on('value', (data) => {
+        //     let obj = data.val();
 
-            for(var prop in obj){
-                donors.push(obj[prop].donor);
+        //     for(var prop in obj){
+        //         donors.push(obj[prop].donor);
                
-                this.setState({
-                    donors: donors
-                })
-                 console.log(this.state.donors);
-            }
+        //         this.setState({
+        //             donors: donors
+        //         })
+        //          console.log(this.state.donors);
+        //     }
 
-        })
+        // })
+
+
     }
 
 
@@ -204,6 +254,49 @@ class DonorList extends Component {
                   
                 }
 
+
+
+ {this.state.arr.map((v, i) => {
+                    return (
+                <div>
+                    <Paper style={table} zDepth={2}>
+
+                    <table key={i}>
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <td>
+                            {v.firstname } {v.lastname} </td>
+                            <hr/>
+                            </tr> <hr/>
+                            <tr>
+                                <th>Email</th>
+                                <td>
+                            {v.email} </td>
+                            </tr>
+                            <hr/>
+                            <tr>
+                                <th>Age</th>
+                                <td>
+                            {v.age} </td>
+                            </tr>
+                            <hr/>
+                            <tr>
+                                <th>Blood Group</th>
+                                    <td>
+                            {v.blood} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </Paper>
+                </div>
+                    )
+                })
+                }
+
+
+
+
             </div>
         );
     }
@@ -224,4 +317,5 @@ const mapDispatchToProps = (dispatch) => { // mapDispatchToProps ye iska apna fu
     }
 }
 
-export default DonorList;
+//export default DonorList;
+export default connect(mapStateToProps, mapDispatchToProps)(DonorList);
