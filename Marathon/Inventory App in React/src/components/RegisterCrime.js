@@ -58,11 +58,11 @@ RegisterCrime.contextTypes = {
 
 class CrimeForm extends React.Component {
 
-//  state = {
-//     value: 1,
-//   };
+ state = {
+    value: 1,
+  };
 
-//   handleChange = (event, index, value) => this.setState({value});
+  handleChange = (event, index, value) => this.setState({value});
 
     render() {
         
