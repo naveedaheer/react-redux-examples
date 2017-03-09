@@ -49,61 +49,61 @@ class DonorList extends Component {
     //  selectedblood={sb:this.refs.selectedBlood.value}
     //  console.log("selected blood", selectedblood)
 
-//      onSearch(e) {
-//         let _self = this;
-//         e.preventDefault()
-//        // let ref = DBfirebase.ref.child("/donors");
-//         let ref = firebase.database().ref().child('/donors');
-//         _self.arr = [];
-//         ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
-//        //   ref.orderByChild('donor').equalTo("A+").once('value', function (snapshot) {
-
-//          // console.log("selected blood", ref.orderByChild(this.refs.selectedBlood.value)
-//             snapshot.forEach(childSnapshot => {
-//                 _self.arr.push(childSnapshot.val())
-//             })
-//             _self.props.findDonor(_self.arr)
-//             _self.setState({
-//                 arr: _self.props.storeReducer.user
-                
-//             })
-//         });
-//   }
-
-  
-  onSearch(e) {
-      var donors = [];
-        //let _self = this;
+     onSearch(e) {
+        let _self = this;
         e.preventDefault()
        // let ref = DBfirebase.ref.child("/donors");
         let ref = firebase.database().ref().child('/donors');
-       // _self.arr = [];
-        ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', (data) => {
-       //   ref.orderByChild('donor').equalTo("A+").once('value', function (snapshot) {
+        _self.arr = [];
+       // ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
+          ref.orderByChild('bloodgroup').equalTo(this.refs.selectedBlood.value).once('value', function (snapshot) {
 
          // console.log("selected blood", ref.orderByChild(this.refs.selectedBlood.value)
-             let obj = data.val();
-console.log(obj)
-for(var prop in obj){
-                donors.push(obj[prop].donor);
-               
-                this.setState({
-                    arr: donors
-                })
-                 console.log(this.state.donors);
-            }
-
-
-            // snapshot.forEach(childSnapshot => {
-            //     _self.arr.push(childSnapshot.val())
-            // })
-            // _self.props.findDonor(_self.arr)
-            // _self.setState({
-            //     arr: _self.props.storeReducer.user
+            snapshot.forEach(childSnapshot => {
+                _self.arr.push(childSnapshot.val())
+            })
+            _self.props.findDonor(_self.arr)
+            _self.setState({
+                arr: _self.props.storeReducer.user
                 
-          //  })
+            })
         });
   }
+
+  
+//   onSearch(e) {
+//       var donors = [];
+//         //let _self = this;
+//         e.preventDefault()
+//        // let ref = DBfirebase.ref.child("/donors");
+//         let ref = firebase.database().ref().child('/donors');
+//        // _self.arr = [];
+//         //ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', (data) => {
+//           ref.orderByChild('bloodgroup').equalTo("A+").once('value', function (snapshot) {
+
+//          // console.log("selected blood", ref.orderByChild(this.refs.selectedBlood.value)
+//              let obj = data.val();
+// console.log(obj)
+// for(var prop in obj){
+//                 donors.push(obj[prop].donor);
+               
+//                 this.setState({
+//                     arr: donors
+//                 })
+//                  console.log(this.state.donors);
+//             }
+
+
+//             // snapshot.forEach(childSnapshot => {
+//             //     _self.arr.push(childSnapshot.val())
+//             // })
+//             // _self.props.findDonor(_self.arr)
+//             // _self.setState({
+//             //     arr: _self.props.storeReducer.user
+                
+//           //  })
+//         });
+//   }
 
 
 // Testing(){
@@ -222,7 +222,7 @@ for(var prop in obj){
   </Table>*/}
   
 
-{this.state.donors.map((m,i)=>{
+{this.state.arr.map((m, i) => {
                     return(
                       <div>
                     
@@ -253,49 +253,6 @@ for(var prop in obj){
                 })
                   
                 }
-
-
-
- {this.state.arr.map((v, i) => {
-                    return (
-                <div>
-                    <Paper style={table} zDepth={2}>
-
-                    <table key={i}>
-                        <tbody>
-                            <tr>
-                                <th>Name</th>
-                                <td>
-                            {v.firstname } {v.lastname} </td>
-                            <hr/>
-                            </tr> <hr/>
-                            <tr>
-                                <th>Email</th>
-                                <td>
-                            {v.email} </td>
-                            </tr>
-                            <hr/>
-                            <tr>
-                                <th>Age</th>
-                                <td>
-                            {v.age} </td>
-                            </tr>
-                            <hr/>
-                            <tr>
-                                <th>Blood Group</th>
-                                    <td>
-                            {v.blood} </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    </Paper>
-                </div>
-                    )
-                })
-                }
-
-
-
 
             </div>
         );
