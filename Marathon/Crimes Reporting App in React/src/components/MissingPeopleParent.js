@@ -32,8 +32,8 @@ export default class HeaderInner extends React.Component {
                     title={title}
                    // iconClassNameRight="muidocs-icon-navigation-expand-more"
                 >
-                 <Link to="/home/missingpeopleparent/registermissingpeople" >   <RaisedButton style={styles.buttonInAppBar} label="Register a Crime" primary={false} /></Link>
-                  <Link to="/home/missingpeopleparent/missingpeople" >   <RaisedButton style={styles.buttonInAppBar} label="View Crimes" primary={false} /></Link>
+                 <Link to="/home/missingpeopleparent/registermissingpeople" >   <RaisedButton style={styles.buttonInAppBar} label="Report Missing Person" primary={false} /></Link>
+                  <Link to="/home/missingpeopleparent/missingpeople" >   <RaisedButton style={styles.buttonInAppBar} label="View Missing People" primary={false} /></Link>
                      
                 </AppBar>
                

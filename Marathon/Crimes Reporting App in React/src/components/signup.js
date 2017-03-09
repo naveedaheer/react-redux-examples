@@ -14,7 +14,8 @@ class Register extends Component {
         this.state = {
             fullname: '',
             email: '',
-            password: ''
+            password: '',
+            city: ''
         }
         this.submit = this.submit.bind(this);
         this.inputHandler = this.inputHandler.bind(this);
@@ -30,7 +31,8 @@ class Register extends Component {
         let newUser = {
             fullname: this.state.fullname,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            city: this.state.city
         }
         
         // console.log(this.state)
@@ -109,6 +111,24 @@ class SignupComponent extends React.Component {
                         floatingLabelText="Password"
                         onChange={this.props._inputHandler}
                         /><br /><br />
+
+                        <select name="city"
+                        value={this.props.signUpState.city}
+                        required
+                        onChange={this.props._inputHandler}>
+                        <option>City   </option>
+                        <option value="California">California</option>
+                        <option value="Florida">Florida</option>
+                        <option value="New Jersey">New Jersey</option>
+                        <option value="New York">New York</option>
+                        <option value="Ohio">Ohio</option>
+                        <option value="Texas">Texas</option>
+                        <option value="Washington">Washington</option>
+                        <option value="Los Angeles">Los Angeles</option>
+                        <option value="New Mexico">New Mexico</option>
+                        <option value="Oxford">Oxford</option>
+                    </select><br /><br />
+
                     <RaisedButton type="submit" label="Sign up" primary={true} /> <br /><br />
                 </form>
                 

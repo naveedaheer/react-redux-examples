@@ -14,6 +14,7 @@ export class DBfirebase {
     static storage = firebase.storage().ref();
     static auth = firebase.auth();
     static refCrime = firebase.database().ref('crimeList');
+    static refMissing = firebase.database().ref('MissingPeople');
     
 
     static saveMultipath(multipath) {

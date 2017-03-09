@@ -37,10 +37,11 @@ class Crimes extends Component {
                       <Table>
     <TableHeader>
       <TableRow>
+              <TableHeaderColumn>Name </TableHeaderColumn>
         <TableHeaderColumn><b>Crime</b></TableHeaderColumn>
-        <TableHeaderColumn>Location </TableHeaderColumn>
+        <TableHeaderColumn>City </TableHeaderColumn>
         <TableHeaderColumn>Informer Mobile </TableHeaderColumn>
-        <TableHeaderColumn>Informer Name </TableHeaderColumn>
+    
       </TableRow>
     </TableHeader>
   </Table>
@@ -53,10 +54,11 @@ class Crimes extends Component {
 
     <TableBody>
       <TableRow>
+            <TableRowColumn>{c.informerName}</TableRowColumn>
         <TableRowColumn> {c.crime}</TableRowColumn>
-        <TableRowColumn>{c.crimeLocation}</TableRowColumn>
+        <TableRowColumn>{c.city}</TableRowColumn>
         <TableRowColumn>{c.informerMobile}</TableRowColumn>
-        <TableRowColumn>{c.informerName}</TableRowColumn>
+      
       </TableRow>
     </TableBody>
   </Table>

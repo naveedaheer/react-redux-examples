@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton';
 import { DBfirebase } from '../database/DBfirebase'
@@ -15,7 +15,7 @@ class RegisterCrime extends Component {
         this.state = {
             informerName: '',
             informerMobile: '',
-            crimeLocation: '',
+            city: '',
            crime:''
            
         }
@@ -33,11 +33,12 @@ class RegisterCrime extends Component {
         let crime = {
             informerName: this.state.informerName,
             informerMobile: this.state.informerMobile,
-            crimeLocation: this.state.crimeLocation,
+            city: this.state.city,
            crime: this.state.crime,
         }
         console.log(crime)
         DBfirebase.refCrime.push({crime});
+        browserHistory.push('/home/crimeparent/crimes')
 
     }
     render() {
@@ -85,16 +86,24 @@ class CrimeForm extends React.Component {
                         value={this.props.signUpState.informerMobile}
                        floatingLabelText="informerMobile"
                         onChange={this.props._inputHandler}
-                        /><br />
+                        /><br /><br />
 
-                    <TextField
-                        type="text"
-                        hintText="crimeLocation"
-                        name="crimeLocation"
-                        value={this.props.signUpState.crimeLocation}
-                        floatingLabelText="crimeLocation"
-                        onChange={this.props._inputHandler}
-                        /><br />
+                    <select name="city"
+                        value={this.props.signUpState.city}
+                        required
+                        onChange={this.props._inputHandler}>
+                        <option>City   </option>
+                        <option value="California">California</option>
+                        <option value="Florida">Florida</option>
+                        <option value="New Jersey">New Jersey</option>
+                        <option value="New York">New York</option>
+                        <option value="Ohio">Ohio</option>
+                        <option value="Texas">Texas</option>
+                        <option value="Washington">Washington</option>
+                        <option value="Los Angeles">Los Angeles</option>
+                        <option value="New Mexico">New Mexico</option>
+                        <option value="Oxford">Oxford</option>
+                    </select><br /><br />
                         <TextField
                         type="text"
                         hintText="Crime"
