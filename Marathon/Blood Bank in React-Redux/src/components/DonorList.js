@@ -48,7 +48,7 @@ class DonorList extends Component {
     }
     
 
-//testing code
+// testing code
 //      onSearch(e) {
 //         let _self = this;
 //         e.preventDefault()
@@ -189,18 +189,6 @@ class DonorList extends Component {
          
         </SelectField> <br /><br />*/}
                     </ center>           
-                         {/*<Table>
-    <TableHeader>
-      <TableRow>
-        <TableHeaderColumn><b>Blood Group</b></TableHeaderColumn>
-        <TableHeaderColumn>Mobile </TableHeaderColumn>
-        <TableHeaderColumn>Full Name  </TableHeaderColumn>
-        <TableHeaderColumn>Age </TableHeaderColumn>
-        <TableHeaderColumn>Address </TableHeaderColumn> 
-      </TableRow>
-    </TableHeader>
-  </Table>*/}
-  
 
 {this.state.arr.map((m, i) => {
                     return(
@@ -213,22 +201,8 @@ class DonorList extends Component {
                         >Age: {m.age}<br />
                         >Address: {m.address}<br />
                         {/*<mui.RaisedButton type="submit" label="Request Blood" secondary={true} />*/}
-                        </Paper>
-
-                      
+                        </Paper>                     
                      </div>
-                    /*<Table>
-    <TableBody>
-      <TableRow>
-        <TableRowColumn> {m.bloodgroup}</TableRowColumn>
-        <TableRowColumn>{m.mobile}</TableRowColumn>
-        <TableRowColumn>{m.fullname}</TableRowColumn>
-        <TableRowColumn>{m.age}</TableRowColumn>
-        <TableRowColumn>{m.address}</TableRowColumn>
-      </TableRow>
-    </TableBody>
-  </Table>*/
-     
   )
                 })
                   
