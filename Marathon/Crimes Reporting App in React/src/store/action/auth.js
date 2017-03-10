@@ -19,3 +19,12 @@ export function Loggedin(user) {
     }
 }
 
+export function SearchMissingPeople(missingPeople) {
+     console.log("Auth action ", missingPeople)
+    return {
+        type: "find",
+        value: missingPeople
+    }
+}
+
+

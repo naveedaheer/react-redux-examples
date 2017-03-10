@@ -44,7 +44,7 @@ class ReportMissingPerson extends Component {
         }
         console.log(missingPerson)
        // DBfirebase.refMissing.push({missingPerson});
-        DBfirebase.ref.child('missingPeople').push({missingPerson});
+        DBfirebase.ref.child('missingPeople').push(missingPerson);
         browserHistory.push('/home/missingpeopleparent/missingpeople')
 
     }

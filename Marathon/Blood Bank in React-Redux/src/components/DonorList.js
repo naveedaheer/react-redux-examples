@@ -195,7 +195,7 @@ class DonorList extends Component {
                       <div>
                     
                         <Paper style={style} zDepth={5} > 
-                        >Bloog: {m.bloodgroup}<br />
+                        >Blood: {m.bloodgroup}<br />
                         >Mobile: {m.mobile}<br /> 
                         >Name: {m.fullname}<br />
                         >Age: {m.age}<br />
@@ -213,14 +213,14 @@ class DonorList extends Component {
     }
 }
 
-const mapStateToProps = (state) => { // mapStateToProps ye iska apna function he
+const mapStateToProps = (state) => { 
      console.log(state.UserReducer)
     return {
         storeReducer: state.UserReducer
     }
 }
-const mapDispatchToProps = (dispatch) => { // mapDispatchToProps ye iska apna function he
-    return {
+const mapDispatchToProps = (dispatch) => {
+        return {
         findDonor: (data) => {
             console.log(data)
             dispatch(FindDonors(data))

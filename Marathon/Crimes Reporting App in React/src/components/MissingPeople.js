@@ -2,8 +2,11 @@ import * as firebase from 'firebase';
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 // import './App.css';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+//import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+import { SearchMissingPeople } from '../store/action/auth'
+import { connect } from 'react-redux'
+
 
 const style = {
   //height: 100,
@@ -14,7 +17,8 @@ const style = {
     display: 'block-inline',
   height: 'auto',
   width: 'auto',
-  padding: 20
+  padding: 20,
+  backgroundColor: '#BDBDBD'
   
 };
 
@@ -23,59 +27,64 @@ class MissingPeopleList extends Component {
         super();
 
         this.state = {
-            missingPeopleList: []
+            missingPeopleList: [],
+             arr: []
         }
-       //  this.onSearch = this.onSearch.bind(this)
+         this.onSearch = this.onSearch.bind(this)
     }
     
-//     //working code
-//      onSearch(e) {
-//         let _self = this;
-//         e.preventDefault()
-//        // let ref = DBfirebase.ref.child("/donors");
-//         let ref = firebase.database().ref().child('/donors');
-//         _self.arr = [];
+    //working code
+     onSearch(e) {
+        let _self = this;
+        e.preventDefault()
+       // let ref = DBfirebase.ref.child("/donors");
+        let ref = firebase.database().ref().child('/missingPeople');
+        _self.arr = [];
        
-//     // ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
-//        //   ref.orderByChild('bloodgroup').equalTo("A+").once('value', function (snapshot) {
-
-//           ref.orderByChild('bloodgroup').equalTo(this.refs.selectedBlood.value).once('value', function (snapshot) {
+    // ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
+       //   ref.orderByChild('bloodgroup').equalTo("A+").once('value', function (snapshot) {
+        console.log(this.refs.selectedCity.value)
+          ref.orderByChild('city').equalTo(this.refs.selectedCity.value).once('value', function (snapshot) {
                 
-                         
+                        
 
-//             snapshot.forEach(childSnapshot => {
+            snapshot.forEach(childSnapshot => {
 
-//                 _self.arr.push(childSnapshot.val())
-//             })
-//             _self.props.findDonor(_self.arr)
-//             _self.setState({
-//                 arr: _self.props.storeReducer.user
+                _self.arr.push(childSnapshot.val())
+                console.log("arr", _self.arr)
                 
-//             })
-//         });
-//   }
+            })
+            _self.props.serachPeople(_self.arr)
+            _self.setState({
+                arr: _self.props.storeReducer.missingPeople
+                
+            })
+        });
+  }
 
-    componentWillMount(){
-        var missingPeople = [];
-        firebase.database().ref('/missingPeople/').on('value', (data) => {
-            let obj = data.val();
+    // componentWillMount(){
+    //     var missingPeople = [];
+    //     firebase.database().ref('/missingPeople/').on('value', (data) => {
+    //         let obj = data.val();
 
-            for(var prop in obj){
-                missingPeople.push(obj[prop].missingPerson);
+    //         for(var prop in obj){
+    //             missingPeople.push(obj[prop].missingPerson);
                
-                this.setState({
-                    missingPeopleList: missingPeople
-                })
-                 console.log(this.state.missingPeopleList);
-            }
+    //             this.setState({
+    //                 missingPeopleList: missingPeople
+    //             })
+    //              console.log(this.state.missingPeopleList);
+    //         }
 
-        })
-    }
+    //     })
+    // }
     
     render() {
         return (
             <div > 
+
                 <center>
+                     <h1>Missing People List</h1>
                     <br /><br />
 
 
@@ -102,12 +111,13 @@ class MissingPeopleList extends Component {
                     <button onClick={this.onSearch} type="submit" > Find </button>
                       </form><br /><br />
 </ center>
-               {this.state.missingPeopleList.map((m,i)=>{
+{console.log("this.state.arr", this.state.arr)}
+               {this.state.arr.map((m, i) => {
                     return(
                       <div>
                     
                         <Paper style={style} zDepth={5} > 
-                        >Name: {m.missingPersonName}<br />
+                        >Name: {m.missingPersonName} <br />
                         >City: {m.city}<br /> 
                         >Gender: {m.gender}<br />
                         >Age: {m.age}<br />
@@ -127,4 +137,21 @@ class MissingPeopleList extends Component {
     }
 }
 
-export default MissingPeopleList;
+
+const mapStateToProps = (state) => { 
+     console.log(state.MissingPeopleReducer)
+    return {
+        storeReducer: state.MissingPeopleReducer
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+        return {
+        serachPeople: (data) => {
+            console.log(data)
+            dispatch(SearchMissingPeople(data))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MissingPeopleList);
+
