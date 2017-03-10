@@ -18,25 +18,62 @@ class Register extends Component {
             mobile: '',
             address: '',
             age:'',
-            bloodgroup:''
+            bloodgroup:'',
+           // possibleBloodGroups:[]
         }
         this.submit = this.submit.bind(this);
         this.inputHandler = this.inputHandler.bind(this);
     }
     inputHandler(e) {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
+            
         })
     }
+    
     submit(e) {
+        var that = this;
+        let possibleGroups=[]
         e.preventDefault();
         let multipath = {};
+bloodgroup: this.state.bloodgroup
+// if(this.state.bloodgroup == "A+" || this.state.bloodgroup == "A-"){
+//     let possibleGroups = ["A+", "A-", "O+", "O-", "AB+", "AB-"];
+    
+//     this.setState({
+        
+//         possibleBloodGroups: ["A+", "A-", "O+", "O-", "AB+", "AB-"]
+            
+//     },setTimeout(()=>{
+//         console.log("state",that.state);
+//     },20))
+    
+// }
+
+if(this.state.bloodgroup == "A+" || this.state.bloodgroup == "A-"){
+     possibleGroups = ["A+", "A-", "O+", "O-", "AB+", "AB-"];  
+}
+
+
+else if(this.state.bloodgroup == "B+" || this.state.bloodgroup == "B-"){
+    possibleGroups = ["O+", "O-", "AB+", "AB-", "B+", "B-"];  
+}
+else if(this.state.bloodgroup == "AB+" || this.state.bloodgroup == "AB-"){
+    possibleGroups = ["O+", "O-", "AB+", "AB-", "B+", "B-","A+","A-"];
+    
+}
+else if(this.state.bloodgroup == "O+" || this.state.bloodgroup == "O-"){
+    possibleGroups = ["O+", "O-", "AB+", "AB-", "B+", "B-","A+","A-"];
+    
+}
+
         let donor = {
             fullname: this.state.fullname,
             mobile: this.state.mobile,
             address: this.state.address,
             age: this.state.age,
-            bloodgroup: this.state.bloodgroup
+            bloodgroup: this.state.bloodgroup,
+            possibleBloodGroups: possibleGroups
         }
 
 //   DBfirebase.customAuth(newUser).then((user) => {
@@ -50,7 +87,7 @@ class Register extends Component {
 //             })
 //         }).catch((error) => alert(error.message))
 
-     
+    
        DBfirebase.refDonor.push(donor);
        this.context.router.push({
                 pathname: "/home/donorList"

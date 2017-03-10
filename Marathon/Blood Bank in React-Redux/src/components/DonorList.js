@@ -40,26 +40,69 @@ class DonorList extends Component {
     constructor(){
         super();
         this.state = {
-            donors: [],
+            
             arr: []
         }
 
          this.onSearch = this.onSearch.bind(this)
     }
-    //  selectedblood={sb:this.refs.selectedBlood.value}
-    //  console.log("selected blood", selectedblood)
+    
 
+//testing code
+//      onSearch(e) {
+//         let _self = this;
+//         e.preventDefault()
+//        // let ref = DBfirebase.ref.child("/donors");
+//         let ref = firebase.database().ref().child('/donors');
+//         _self.arr = [];
+       
+//     // ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
+//   // if(this.refs.selectedBlood.value == "A+" || this.refs.selectedBlood.value =="A-" ){
+//         //  ref.orderByChild('possibleBloodGroups').equalTo("A+", "A-", "O+", "O-", "AB+", "AB-").once('value', function (snapshot) {
+        
+
+//        // ref.once('value', function (snapshot) {
+//           ref.orderByChild('bloodgroup').equalTo(this.refs.selectedBlood.value).once('value', function (snapshot) {
+//                // var allBloodGroups = snapshot.val();
+            
+
+
+//             snapshot.forEach(childSnapshot => {
+
+//                 _self.arr.push(childSnapshot.val())
+//             })
+//             _self.props.findDonor(_self.arr)
+//             _self.setState({
+//                 arr: _self.props.storeReducer.user
+                
+//             })
+          
+//         });
+     
+//     }
+//   }
+ 
+
+
+
+  
+//working code
      onSearch(e) {
         let _self = this;
         e.preventDefault()
        // let ref = DBfirebase.ref.child("/donors");
         let ref = firebase.database().ref().child('/donors');
         _self.arr = [];
-       // ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
-          ref.orderByChild('bloodgroup').equalTo(this.refs.selectedBlood.value).once('value', function (snapshot) {
+       
+    // ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', function (snapshot) {
+       //   ref.orderByChild('bloodgroup').equalTo("A+").once('value', function (snapshot) {
 
-         // console.log("selected blood", ref.orderByChild(this.refs.selectedBlood.value)
+          ref.orderByChild('bloodgroup').equalTo(this.refs.selectedBlood.value).once('value', function (snapshot) {
+                
+                         
+
             snapshot.forEach(childSnapshot => {
+
                 _self.arr.push(childSnapshot.val())
             })
             _self.props.findDonor(_self.arr)
@@ -71,69 +114,6 @@ class DonorList extends Component {
   }
 
   
-//   onSearch(e) {
-//       var donors = [];
-//         //let _self = this;
-//         e.preventDefault()
-//        // let ref = DBfirebase.ref.child("/donors");
-//         let ref = firebase.database().ref().child('/donors');
-//        // _self.arr = [];
-//         //ref.orderByChild(this.refs.selectedBlood.value).equalTo(true).once('value', (data) => {
-//           ref.orderByChild('bloodgroup').equalTo("A+").once('value', function (snapshot) {
-
-//          // console.log("selected blood", ref.orderByChild(this.refs.selectedBlood.value)
-//              let obj = data.val();
-// console.log(obj)
-// for(var prop in obj){
-//                 donors.push(obj[prop].donor);
-               
-//                 this.setState({
-//                     arr: donors
-//                 })
-//                  console.log(this.state.donors);
-//             }
-
-
-//             // snapshot.forEach(childSnapshot => {
-//             //     _self.arr.push(childSnapshot.val())
-//             // })
-//             // _self.props.findDonor(_self.arr)
-//             // _self.setState({
-//             //     arr: _self.props.storeReducer.user
-                
-//           //  })
-//         });
-//   }
-
-
-// Testing(){
-// const rootRef = firebase.database().ref();
-//     const bloodRef = rootRef.child('donors').orderByChild('bloodgroup').equalTo('A+').on('value',(data)=>{
-//  let obj = data.val();
-// var donors = [];  
-//  for(var prop in obj){
-//                 donors.push(obj[prop].donor);
-               
-//                 // this.setState({
-//                 //     donors: donors
-//                 // })
-//                   console.log(donors);
-//             }
-//     });
-//     const filter = bloodRef.on('value', (data)=>{
-//          let obj = data.val();
-// var donors = [];
-//             for(var prop in obj){
-//                 donors.push(obj[prop].donor);
-               
-//                 // this.setState({
-//                 //     donors: donors
-//                 // })
-//                   console.log(donors);
-//             }
-
-// }
-   // }
 
   
     componentWillMount(){
@@ -232,7 +212,7 @@ class DonorList extends Component {
                         >Name: {m.fullname}<br />
                         >Age: {m.age}<br />
                         >Address: {m.address}<br />
-                        <mui.RaisedButton type="submit" label="Request Blood" secondary={true} />
+                        {/*<mui.RaisedButton type="submit" label="Request Blood" secondary={true} />*/}
                         </Paper>
 
                       
