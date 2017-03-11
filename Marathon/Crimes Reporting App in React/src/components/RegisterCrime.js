@@ -37,7 +37,7 @@ class RegisterCrime extends Component {
            crime: this.state.crime,
         }
         console.log(crime)
-        DBfirebase.refCrime.push({crime});
+        DBfirebase.refCrime.push(crime);
         browserHistory.push('/home/crimeparent/crimes')
 
     }

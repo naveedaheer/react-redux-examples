@@ -19,7 +19,7 @@ var styles = {
 },
 }
 
-export default class HeaderInner extends React.Component {
+export default class CrimesParent extends React.Component {
 
 
     render() {

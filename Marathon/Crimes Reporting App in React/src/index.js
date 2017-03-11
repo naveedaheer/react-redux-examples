@@ -14,7 +14,9 @@ import HeaderInner from "./components/HeaderInner"
 import Thankyou from "./components/Thankyou"
 import Crimes from "./components/Crimes"
 import MissingPeople from "./components/MissingPeople"
-import Complaints from "./components/ComplaintsList"
+import ComplaintsList from "./components/ComplaintsList"
+import ComplaintsParent from "./components/ComplaintsParent"
+import RegisterComplaint from "./components/RegisterComplaint"
 import RegisterCrime from "./components/RegisterCrime"
 import CrimeParent from "./components/crimeParent"
 import RegisterMissingPeople from "./components/RegisterMissingpeople"
@@ -53,9 +55,15 @@ ReactDOM.render((
                 <Route path="registermissingpeople" component={RegisterMissingPeople} />
                 </Route>
 
+                <Route path="complaintsparent" component={ComplaintsParent} >
+                <IndexRoute component={ComplaintsList}> </IndexRoute>
+                <Route path="complaintslist" component={ComplaintsList} />
+                <Route path="registercomplaint" component={RegisterComplaint} />
+                </Route>
+
                 <Route path="missingpeople" component={MissingPeople} />
                 <Route path="logout" component={Login}></Route>
-                <Route path="complaints" component={Complaints}></Route>
+                <Route path="complaints" component={ComplaintsParent}></Route>
                 
                 </Route>
 

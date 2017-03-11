@@ -19,11 +19,11 @@ export function Loggedin(user) {
     }
 }
 
-export function SearchMissingPeople(missingPeople) {
-     console.log("Auth action ", missingPeople)
+export function Search(data) {
+     console.log("Auth action ", data)
     return {
         type: "find",
-        value: missingPeople
+        value: data
     }
 }
 

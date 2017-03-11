@@ -9,14 +9,14 @@ import AppBar from 'material-ui/AppBar';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-class RegisterCrime extends Component {
+class RegisterComplaint extends Component {
     constructor() {
         super();
         this.state = {
             informerName: '',
             informerMobile: '',
             city: '',
-           crime:''
+           complaint:''
            
         }
         this.submit = this.submit.bind(this);
@@ -30,33 +30,33 @@ class RegisterCrime extends Component {
     submit(e) {
         e.preventDefault();
         let multipath = {};
-        let crime = {
+        let complaint = {
             informerName: this.state.informerName,
             informerMobile: this.state.informerMobile,
             city: this.state.city,
-           crime: this.state.crime,
+           complaint: this.state.complaint,
         }
-        console.log(crime)
-        DBfirebase.refCrime.push({crime});
-        browserHistory.push('/home/crimeparent/crimes')
+        console.log(complaint)
+        DBfirebase.refCrime.push(complaint);
+        browserHistory.push('/home/complaintsparent/complaintslist')
 
     }
     render() {
         return (
             <div ><center>
-                <CrimeForm signUpState={this.state} _inputHandler={this.inputHandler} _submit={this.submit} />
+                <ComplaintForm signUpState={this.state} _inputHandler={this.inputHandler} _submit={this.submit} />
             </center>
             </div>
         );
     }
 }
 
-RegisterCrime.contextTypes = {
+RegisterComplaint.contextTypes = {
     router: React.PropTypes.object.isRequired
 }
 
 
-class CrimeForm extends React.Component {
+class ComplaintForm extends React.Component {
 
 //  state = {
 //     value: 1,
@@ -69,7 +69,7 @@ class CrimeForm extends React.Component {
         return (
             <div >
               
-                <h1>Register a Crime</h1>
+                <h1>Register a Complaint</h1>
                 <form onSubmit={this.props._submit} >
                     <TextField
                         hintText="Full Name"
@@ -81,10 +81,10 @@ class CrimeForm extends React.Component {
 
                     <TextField
                         type="text"
-                        hintText="informerMobile"
+                        hintText="Mobile"
                         name="informerMobile"
                         value={this.props.signUpState.informerMobile}
-                       floatingLabelText="informerMobile"
+                       floatingLabelText="Mobile"
                         onChange={this.props._inputHandler}
                         /><br /><br />
 
@@ -106,25 +106,25 @@ class CrimeForm extends React.Component {
                     </select><br /><br />
                         <TextField
                         type="text"
-                        hintText="Crime"
-                        name="crime"
-                        value={this.props.signUpState.crime}
-                        floatingLabelText="Crime"
+                        hintText="Complaint"
+                        name="complaint"
+                        value={this.props.signUpState.complaint}
+                        floatingLabelText="Complaint"
                         onChange={this.props._inputHandler}
                         /><br />
                         <br />
 
-                 <RaisedButton type="submit" label="Register a Crime" primary={false} secondary={true} /> <br /><br />
+                 <RaisedButton type="submit" label="Register a Complaint" primary={false} secondary={true} /> <br /><br />
                 </form>
                 
             </div>
         )
     }
 }
-// CrimeForm.PropTypes = {
+// ComplaintForm.PropTypes = {
 //     _inputHandler: React.PropTypes.func.isRequired,
 //     _submit: React.PropTypes.func.isRequired
 
 // }
 
-export default RegisterCrime;
+export default RegisterComplaint;

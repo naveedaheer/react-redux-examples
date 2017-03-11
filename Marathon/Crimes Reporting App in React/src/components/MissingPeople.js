@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // import './App.css';
 //import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
-import { SearchMissingPeople } from '../store/action/auth'
+import { Search } from '../store/action/auth'
 import { connect } from 'react-redux'
 
 
@@ -27,7 +27,7 @@ class MissingPeopleList extends Component {
         super();
 
         this.state = {
-            missingPeopleList: [],
+          //  missingPeopleList: [],
              arr: []
         }
          this.onSearch = this.onSearch.bind(this)
@@ -148,7 +148,7 @@ const mapDispatchToProps = (dispatch) => {
         return {
         serachPeople: (data) => {
             console.log(data)
-            dispatch(SearchMissingPeople(data))
+            dispatch(Search(data))
         }
     }
 }

@@ -3,11 +3,12 @@ import { createStore, combineReducers } from 'redux'
 
 import AuthReducer from './reducer/authReducer'
 import MissingPeopleReducer from './reducer/missingPeopleReducer'
+import CrimeReducer from './reducer/crimeReducer'
 
 export const rootReducer = createStore(combineReducers({
         AuthReducer,
-        MissingPeopleReducer
-        
+        MissingPeopleReducer,
+        CrimeReducer
            })
            )
 
