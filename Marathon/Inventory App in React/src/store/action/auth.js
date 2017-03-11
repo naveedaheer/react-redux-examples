@@ -19,3 +19,12 @@ export function Loggedin(user) {
     }
 }
 
+export function Search(data) {
+     console.log("Auth action ", data)
+    return {
+        type: "find",
+        value: data
+    }
+}
+
+
