@@ -61,7 +61,7 @@ class Crimes extends Component {
 
 
                 <center>
-                     <h1>Crimes List</h1>
+                     <h1>Complaints List</h1>
                     <br /><br />
 
 
