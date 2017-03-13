@@ -7,9 +7,6 @@ const InitalState = {
 
 const AuthReducer = (state = InitalState, action) => {
     switch (action.type) {
-        case "signup":
-            return Object.assign(state, { user: action.value, isRegistered: true })
-
         case "signin":
             return Object.assign(state, { user: action.value, isLoggedin: true })
     

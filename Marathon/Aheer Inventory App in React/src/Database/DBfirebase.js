@@ -1,11 +1,11 @@
 import * as firebase from 'firebase';
 
 var config = {
- apiKey: "AIzaSyDUbqPls1aDhX0MF_8iqDYfLKyqdZqiFvM",
-    authDomain: "report-crimes-app-in-react.firebaseapp.com",
-    databaseURL: "https://report-crimes-app-in-react.firebaseio.com",
-    storageBucket: "report-crimes-app-in-react.appspot.com",
-    messagingSenderId: "818357914916"
+    apiKey: "AIzaSyCSQ9TAbzCulxG1kmzCV4sBA4uG4FgG7bk",
+    authDomain: "aheer-inventory-app-in-react.firebaseapp.com",
+    databaseURL: "https://aheer-inventory-app-in-react.firebaseio.com",
+    storageBucket: "aheer-inventory-app-in-react.appspot.com",
+    messagingSenderId: "183775302122"
 };
 firebase.initializeApp(config);
 export class DBfirebase {
@@ -13,9 +13,6 @@ export class DBfirebase {
     static ref = firebase.database().ref();
     static storage = firebase.storage().ref();
     static auth = firebase.auth();
-    static refCrime = firebase.database().ref('crimeList');
-    static refMissing = firebase.database().ref('MissingPeople');
-    
 
     static saveMultipath(multipath) {
         return this.ref.update(multipath);
