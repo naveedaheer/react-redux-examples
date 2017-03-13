@@ -18,7 +18,8 @@ ReactDOM.render(
 <MuiThemeProvider>
   <Provider store={store}>
     <Router history={browserHistory} >
-      <Route path="/" component={Dashboard} > </Route>
+      <Route path="/home" component={Dashboard} > </Route>
+       <Route path="/" component={Login} > </Route>
     </Router>
   </ Provider>
 </ MuiThemeProvider>

@@ -1,6 +1,8 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import Menu from 'material-ui/Menu';
+import Popover from 'material-ui/Popover';
 import RaisedButton from 'material-ui/RaisedButton';
 import MUI from 'material-ui'
 import AppBar from 'material-ui/AppBar';
@@ -18,6 +20,10 @@ import AppBar from 'material-ui/AppBar';
     backgroundColor: '#3F51B5',
     color: "green",
     width: 200
+  },
+
+  button:{
+   // width:260
   }
  }
 
@@ -25,12 +31,14 @@ export default class Dashboard extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {open: false};
+    this.state = {
+    openDrawer: false,
+   
+  };
+
   }
 
-  
-
-  handleToggle = () => this.setState({open: !this.state.open});
+  handleToggle = () => this.setState({openDrawer: !this.state.openDrawer});
 
   render() {
     return (
@@ -41,18 +49,65 @@ export default class Dashboard extends React.Component {
 
         <Drawer 
         // width={200}
-        backgroundColor={"#4A148C"}
-         openSecondary={false} open={this.state.open} style={styles.drawer} >
+       
+         openSecondary={false} open={this.state.openDrawer} style={styles.drawer} >
               
               <AppBar title="Dashboard" style={styles.appBar}
         iconClassNameRight="muidocs-icon-navigation-expand-more"
          onTouchTap={this.handleToggle} >   </ AppBar>
+           <br /><br /><RaisedButton
+        fullWidth
+          style={styles.button}
+          onTouchTap={this.handleTouchTap}
+          label="Sale"
+          primary={true}
+        /><br /><br /><br />
 
-          <MenuItem>Add Product</MenuItem>
-          <MenuItem>View Product</MenuItem>
-          
+           <RaisedButton
+        fullWidth
+          style={styles.button}
+          onTouchTap={this.handleTouchTap}
+          label="purchase"
+          primary={true}
+        /><br /><br /><br />
+
+ <RaisedButton
+        fullWidth
+          style={styles.button}
+          onTouchTap={this.handleTouchTap}
+          label="stock"
+          primary={true}
+        /><br /><br /><br />
+
+<RaisedButton
+        fullWidth
+          style={styles.button}
+          onTouchTap={this.handleTouchTap}
+          label="Products"
+          primary={true}
+        /><br /><br /><br />
+
+<RaisedButton
+        fullWidth
+          style={styles.button}
+          onTouchTap={this.handleTouchTap}
+          label="Stores"
+          primary={true}
+        /><br /><br /><br />
+
+        <RaisedButton
+        fullWidth
+          style={styles.button}
+          onTouchTap={this.handleTouchTap}
+          label="Users"
+          primary={true}
+        /><br /><br /><br />
+
+
         </Drawer>
    
+
+
       </div>
     );
   }
