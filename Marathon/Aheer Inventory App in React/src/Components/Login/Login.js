@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { signIn } from '../Store/Actions/Auth'
+import { signIn } from '../../Store/Actions/Auth'
 import { connect } from 'react-redux'
-import { DBfirebase } from '../Database/DBfirebase'
+import { DBfirebase } from '../../Database/DBfirebase'
 
 import { Link } from "react-router"
 import TextField from 'material-ui/TextField';
@@ -73,7 +73,7 @@ class SigninComponent extends React.Component {
         return (
             <div >
                 <center>
-               <h1>Login</h1>
+               <h1>Admin Login</h1>
                 <form onSubmit={this.props._submit}>
                     <TextField
                         type="email"
@@ -92,9 +92,7 @@ class SigninComponent extends React.Component {
                         onChange={this.props._inputHandler}
                         required
                         /><br /><br />
-                    <RaisedButton type="submit" label="Sign in" primary={true} /><br />
-               <br /><br />OR<br /><br />Create Account<Link to="/signup"><br /><br /><RaisedButton label="Signup" primary={false} /></Link>
-                
+                    <RaisedButton type="submit" label="Sign in" primary={true} /><br />                
                 </form>
                 </center>
             </div>
