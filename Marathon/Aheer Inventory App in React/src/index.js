@@ -6,6 +6,7 @@ import { store } from './Store/Store/Store';
 import Login from './Components/Login/Login';
 import Dashboard from "./Components/AdminDashboard/Dashboard"
 import AddProduct from './Components/AddRecords/AddProduct'
+import ViewProducts from './Components/Reports/ViewProducts'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -21,6 +22,7 @@ ReactDOM.render(
     <Router history={browserHistory} >
       <Route path="/home" component={Dashboard} >
        <Route path="add-product" component={AddProduct} > </Route>
+       <Route path="view-products" component={ViewProducts} > </Route>
        </Route>
        <Route path="/" component={Login} > </Route>
     </Router>

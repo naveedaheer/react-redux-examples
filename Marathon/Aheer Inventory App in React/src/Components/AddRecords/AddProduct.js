@@ -36,7 +36,7 @@ class AddProduct extends Component {
         }
         console.log(productDetails)
         DBfirebase.refAddProduct.push(productDetails);
-        browserHistory.push('/home/view-product')
+        browserHistory.push('/home/view-products')
 
     }
     render() {

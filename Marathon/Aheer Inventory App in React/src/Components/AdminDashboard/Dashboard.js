@@ -42,7 +42,7 @@ export default class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
+      <div  onTouchTap={this.handleToggle} >
         <AppBar title="Aheer Inventory" style={styles.appBar}
         iconClassNameRight="muidocs-icon-navigation-expand-more"
          onTouchTap={this.handleToggle} >      </ AppBar>
