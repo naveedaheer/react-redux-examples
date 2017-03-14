@@ -31,6 +31,8 @@ class ViewProducts extends Component {
         }
          this.onSearch = this.onSearch.bind(this)
     }
+
+    
     
     //working code
      onSearch(e) {

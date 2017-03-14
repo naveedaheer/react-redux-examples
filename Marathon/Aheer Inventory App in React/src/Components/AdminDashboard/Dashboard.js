@@ -6,6 +6,7 @@ import Popover from 'material-ui/Popover';
 import RaisedButton from 'material-ui/RaisedButton';
 import MUI from 'material-ui'
 import AppBar from 'material-ui/AppBar';
+import {Link} from 'react-router'
 
 
  const styles ={ 
@@ -13,7 +14,7 @@ import AppBar from 'material-ui/AppBar';
    // backgroundColor: '#009688',
     backgroundColor: '#3F51B5',
      minHeight:50,
-     //height:300
+     // height:300
   },
 
   drawer: {
@@ -42,7 +43,7 @@ export default class Dashboard extends React.Component {
 
   render() {
     return (
-      <div  onTouchTap={this.handleToggle} >
+      <div >
         <AppBar title="Aheer Inventory" style={styles.appBar}
         iconClassNameRight="muidocs-icon-navigation-expand-more"
          onTouchTap={this.handleToggle} >      </ AppBar>
@@ -55,7 +56,8 @@ export default class Dashboard extends React.Component {
               <AppBar title="Dashboard" style={styles.appBar}
         iconClassNameRight="muidocs-icon-navigation-expand-more"
          onTouchTap={this.handleToggle} >   </ AppBar>
-           <br /><br /><RaisedButton
+           <br /><br />
+           <RaisedButton
         fullWidth
           style={styles.button}
           onTouchTap={this.handleTouchTap}
@@ -63,13 +65,13 @@ export default class Dashboard extends React.Component {
           primary={true}
         /><br /><br /><br />
 
-           <RaisedButton
+          <Link to='/home/add-purchase' > <RaisedButton
         fullWidth
           style={styles.button}
           onTouchTap={this.handleTouchTap}
           label="purchase"
           primary={true}
-        /><br /><br /><br />
+        /> </Link> <br /><br /><br />
 
  <RaisedButton
         fullWidth
@@ -79,13 +81,13 @@ export default class Dashboard extends React.Component {
           primary={true}
         /><br /><br /><br />
 
-<RaisedButton
+<Link to='/home/add-product' ><RaisedButton
         fullWidth
           style={styles.button}
           onTouchTap={this.handleTouchTap}
           label="Products"
           primary={true}
-        /><br /><br /><br />
+        /></Link><br /><br /><br />
 
 <RaisedButton
         fullWidth
