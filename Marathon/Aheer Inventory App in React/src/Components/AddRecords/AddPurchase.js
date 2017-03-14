@@ -17,10 +17,10 @@ class AddProduct extends Component {
     constructor() {
         super();
         this.state = {
-             arr: [],
+            arr: [],
             productName: '',
             description: '',
-           company:''
+            company:''
            
         }
         this.submit = this.submit.bind(this);
@@ -88,6 +88,7 @@ class AddProduct extends Component {
     });
   };
 
+
     render() {
         return (
             <div ><center>
@@ -103,11 +104,17 @@ class AddProduct extends Component {
 // }
 
 
+const dataSourceConfig = {
+  text: 'textKey',
+  value: 'valueKey',
+};
+
 class AddProductForm extends React.Component {
 
 
     render() {
-        
+        console.log("this.props.signUpState.arr",this.props.signUpState.arr)
+        const datasource = this.props.signUpState.arr;
         return (
             <div >
               
@@ -117,8 +124,10 @@ class AddProductForm extends React.Component {
           hintText="Product Name"
           filter={AutoComplete.noFilter}
           openOnFocus={true}
-          dataSource={this.props.signUpState.arr}
+        //  dataSource={this.props.signUpState.arr}
+            dataSource={datasource}
           onUpdateInput={this.props.signUpState.handleUpdateInput}
+          dataSourceConfig={dataSourceConfig}
         />
                     <TextField
                         hintText="Product Name"
