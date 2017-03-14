@@ -3,10 +3,12 @@ import { createStore, combineReducers } from 'redux'
 
 import AuthReducer from '../Reducers/AuthReducer'
 import ProductReducer from '../Reducers/ProductReducer'
+import StoreReducer from '../Reducers/StoreReducer'
 
 export const rootReducer = createStore(combineReducers({
         AuthReducer,
-        ProductReducer
+        ProductReducer,
+        StoreReducer
            })
            )
 
