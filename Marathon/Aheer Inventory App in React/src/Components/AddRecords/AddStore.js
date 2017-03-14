@@ -36,7 +36,7 @@ class AddStore extends Component {
         }
         console.log(storeDetails)
         DBfirebase.ref.child('/AddedStores').push(storeDetails);
-        browserHistory.push('/home/view-store')
+        browserHistory.push('/home/view-stores')
 
     }
     render() {
