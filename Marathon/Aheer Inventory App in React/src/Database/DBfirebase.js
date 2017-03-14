@@ -13,6 +13,7 @@ export class DBfirebase {
     static ref = firebase.database().ref();
     static storage = firebase.storage().ref();
     static auth = firebase.auth();
+     static refAddProduct = firebase.database().ref('AddedProducts');
 
     static saveMultipath(multipath) {
         return this.ref.update(multipath);
