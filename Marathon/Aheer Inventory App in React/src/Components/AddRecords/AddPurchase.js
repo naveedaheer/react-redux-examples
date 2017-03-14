@@ -114,11 +114,25 @@ class AddProductForm extends React.Component {
 
     render() {
         console.log("this.props.signUpState.arr",this.props.signUpState.arr)
-        const datasource = this.props.signUpState.arr;
+        const datasource = []
+
+  {this.props.signUpState.arr.map((p, i) => {
+                    return(
+                      <div>
+                 
+                        datasource : {p.productName} 
+                                                                
+                     </div>
+  )
+                })
+                  
+                }
+
+
         return (
             <div >
               
-                <h1>Add New Product</h1>
+                <h1>Add Purchased Order</h1>
                 <form onSubmit={this.props._submit} >
                     <AutoComplete
           hintText="Product Name"
@@ -128,7 +142,7 @@ class AddProductForm extends React.Component {
             dataSource={datasource}
           onUpdateInput={this.props.signUpState.handleUpdateInput}
           dataSourceConfig={dataSourceConfig}
-        />
+        /><br />
                     <TextField
                         hintText="Product Name"
                         name="productName"

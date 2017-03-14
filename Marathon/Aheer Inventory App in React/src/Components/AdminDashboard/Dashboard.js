@@ -46,9 +46,9 @@ export default class Dashboard extends React.Component {
       <div >
         <AppBar title="Aheer Inventory" style={styles.appBar}
         iconClassNameRight="muidocs-icon-navigation-expand-more"
-         onTouchTap={this.handleToggle} >      </ AppBar>
-{this.props.children}
-        <Drawer 
+         onTouchTap={this.handleToggle} >   
+         
+          <Drawer 
         // width={200}
        
          openSecondary={false} open={this.state.openDrawer} style={styles.drawer} >
@@ -107,7 +107,11 @@ export default class Dashboard extends React.Component {
 
 
         </Drawer>
-   
+
+         
+            </ AppBar>
+{this.props.children}
+          
 
 
       </div>
