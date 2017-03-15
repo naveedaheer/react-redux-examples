@@ -12,6 +12,10 @@ import AutoComplete from 'material-ui/AutoComplete';
 import * as firebase from 'firebase';
 import { Search } from '../../Store/Actions/Auth'
 
+ const style = {
+            padding: '10px',
+            textAlign: 'center'
+        };
 
 class AddProduct extends Component {
     constructor() {
@@ -20,7 +24,7 @@ class AddProduct extends Component {
             arr: [],
             productName: '',
             description: '',
-            company:''
+            company:'',
            
         }
         this.submit = this.submit.bind(this);
@@ -116,7 +120,16 @@ class AddProductForm extends React.Component {
         console.log("this.props.signUpState.arr",this.props.signUpState.arr)
         const datasource = []
 
-  {this.props.signUpState.arr.map((p, i) => {
+         {
+                                    this.props.signUpState.arr.map((v, i) => {
+                                        return (
+                                          datasource.push(v.productName)
+                                        )
+                                    })}
+
+                                    console.log("datasource", datasource)
+
+  /*{this.props.signUpState.arr.map((p, i) => {
                     return(
                       <div>
                  
@@ -126,7 +139,7 @@ class AddProductForm extends React.Component {
   )
                 })
                   
-                }
+                }*/
 
 
         return (
@@ -134,11 +147,30 @@ class AddProductForm extends React.Component {
               
                 <h1>Add Purchased Order</h1>
                 <form onSubmit={this.props._submit} >
+
+
+       <select style={style}
+                                required
+                                ref="store">
+                                {
+                                    this.props.signUpState.arr.map((v, i) => {
+                                        return (
+                                            <option value={v.productName} key={i}> {v.productName} </option>
+                                        )
+                                    })}                            
+                                    </select>
+                            <br />
+                            <br />
+
+
+
                     <AutoComplete
           hintText="Product Name"
-          filter={AutoComplete.noFilter}
+         // filter={AutoComplete.noFilter}
+          filter={AutoComplete.caseInsensitiveFilter}
           openOnFocus={true}
-        //  dataSource={this.props.signUpState.arr}
+          name="productName"
+         value={this.props.signUpState.productName}
             dataSource={datasource}
           onUpdateInput={this.props.signUpState.handleUpdateInput}
           dataSourceConfig={dataSourceConfig}

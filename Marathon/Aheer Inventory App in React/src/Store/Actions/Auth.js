@@ -19,3 +19,11 @@ export function Search(data) {
         value: data
     }
 }
+
+export function CreateStore(data) {
+    console.log("Auth action ", data)
+    return {
+        type: "addStore",
+        value: data
+    }
+}
