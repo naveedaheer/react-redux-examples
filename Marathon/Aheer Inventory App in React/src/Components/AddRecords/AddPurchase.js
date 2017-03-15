@@ -120,26 +120,13 @@ class AddProductForm extends React.Component {
         console.log("this.props.signUpState.arr",this.props.signUpState.arr)
         const datasource = []
 
-         {
-                                    this.props.signUpState.arr.map((v, i) => {
+         { this.props.signUpState.arr.map((v, i) => {
                                         return (
                                           datasource.push(v.productName)
                                         )
                                     })}
 
                                     console.log("datasource", datasource)
-
-  /*{this.props.signUpState.arr.map((p, i) => {
-                    return(
-                      <div>
-                 
-                        datasource : {p.productName} 
-                                                                
-                     </div>
-  )
-                })
-                  
-                }*/
 
 
         return (
@@ -149,7 +136,7 @@ class AddProductForm extends React.Component {
                 <form onSubmit={this.props._submit} >
 
 
-       <select style={style}
+       {/*<select style={style}
                                 required
                                 ref="store">
                                 {
@@ -158,7 +145,7 @@ class AddProductForm extends React.Component {
                                             <option value={v.productName} key={i}> {v.productName} </option>
                                         )
                                     })}                            
-                                    </select>
+                                    </select>*/}
                             <br />
                             <br />
 
@@ -167,21 +154,19 @@ class AddProductForm extends React.Component {
                     <AutoComplete
           hintText="Product Name"
          // filter={AutoComplete.noFilter}
+         // filter={AutoComplete.fuzzyFilter}
           filter={AutoComplete.caseInsensitiveFilter}
           openOnFocus={true}
           name="productName"
          value={this.props.signUpState.productName}
             dataSource={datasource}
+             floatingLabelText="Product Name"
+             hintText="Product Name"
+             onChange={this.props._inputHandler}
           onUpdateInput={this.props.signUpState.handleUpdateInput}
           dataSourceConfig={dataSourceConfig}
-        /><br />
-                    <TextField
-                        hintText="Product Name"
-                        name="productName"
-                        value={this.props.signUpState.productName}
-                     floatingLabelText="Product Name"
-                        onChange={this.props._inputHandler}
-                        /><br /><br />
+        />
+                    <br /><br />
 
                     <TextField
                         type="text"
