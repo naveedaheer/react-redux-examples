@@ -108,6 +108,7 @@ class ViewProducts extends Component {
                         >Name: {p.productName} <br />
                         >Description: {p.description}<br /> 
                         >Company: {p.company}<br />
+                        >MRP: {p.MRP}<br />
                         {/*<mui.RaisedButton type="submit" label="Request Blood" secondary={true} />*/}
                         </Paper>                     
                      </div>

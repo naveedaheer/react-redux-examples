@@ -15,7 +15,8 @@ class AddProduct extends Component {
         this.state = {
             productName: '',
             description: '',
-           company:''
+           company: '',
+           MRP: ''
            
         }
         this.submit = this.submit.bind(this);
@@ -33,6 +34,7 @@ class AddProduct extends Component {
             productName: this.state.productName,
             description: this.state.description,
            company: this.state.company,
+           MRP: this.state.MRP
         }
         console.log(productDetails)
         DBfirebase.refAddProduct.push(productDetails);
@@ -88,6 +90,16 @@ class AddProductForm extends React.Component {
                         name="company"
                         value={this.props.signUpState.company}
                         floatingLabelText="company"
+                        onChange={this.props._inputHandler}
+                        /><br />
+                        <br />
+
+                        <TextField
+                        type="number"
+                        hintText="MRP"
+                        name="MRP"
+                        value={this.props.signUpState.MRP}
+                        floatingLabelText="Max Retail Price"
                         onChange={this.props._inputHandler}
                         /><br />
                         <br />
