@@ -107,12 +107,10 @@ export default class Dashboard extends React.Component {
 
 
         </Drawer>
-
-         
+ 
             </ AppBar>
-{this.props.children}
-          
 
+{this.props.children}
 
       </div>
     );
