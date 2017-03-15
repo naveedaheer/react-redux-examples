@@ -21,7 +21,8 @@ class AddProduct extends Component {
     constructor() {
         super();
         this.state = {
-            arr: [],
+            products: [],
+            stores: [],
             productName: '',
             description: '',
             company:'',
@@ -30,7 +31,7 @@ class AddProduct extends Component {
         this.submit = this.submit.bind(this);
         this.inputHandler = this.inputHandler.bind(this);
         this.onSearch = this.onSearch.bind(this);
-        this.handleUpdateInput = this.handleUpdateInput.bind(this);
+      //  this.handleUpdateInput = this.handleUpdateInput.bind(this);
     }
     inputHandler(e) {
         this.setState({
@@ -42,12 +43,13 @@ class AddProduct extends Component {
         let multipath = {};
         let productDetails = {
             productName: this.state.productName,
+           //  productName: this.refs.productName.value,
             description: this.state.description,
            company: this.state.company,
         }
         console.log(productDetails)
-        DBfirebase.refAddProduct.push(productDetails);
-        browserHistory.push('/home/view-purchases')
+      //  DBfirebase.refAddProduct.push(productDetails);
+      //  browserHistory.push('/home/view-purchases')
 
     }
 
@@ -56,7 +58,7 @@ class AddProduct extends Component {
         let _self = this;
        // e.preventDefault()
         let ref = firebase.database().ref().child('/AddedProducts/');
-        _self.arr = [];
+        _self.products = [];
        
       //  console.log(this.refs.selectedCity.value)
         //  ref.orderByChild('city').equalTo(this.refs.selectedCity.value).once('value', function (snapshot) {
@@ -66,13 +68,13 @@ class AddProduct extends Component {
 
             snapshot.forEach(childSnapshot => {
 
-                _self.arr.push(childSnapshot.val())
-                console.log("arr", _self.arr)
+                _self.products.push(childSnapshot.val())
+                console.log("products", _self.products)
                 
             })
-            _self.props.serachProducts(_self.arr)
+            _self.props.serachProducts(_self.products)
             _self.setState({
-                arr: _self.props.storeReducer.products
+                products: _self.props.storeReducer.products
                 
             })
         });
@@ -82,13 +84,11 @@ class AddProduct extends Component {
        this.onSearch();
     }
 
-    handleUpdateInput = (value) => {
+    handleUpdateInput = (e) => {
     this.setState({
-      arr: [
-        value,
-        value + value,
-        value + value + value,
-      ],
+     
+      [e.target.name]: e.target.value
+      
     });
   };
 
@@ -108,26 +108,20 @@ class AddProduct extends Component {
 // }
 
 
-const dataSourceConfig = {
-  text: 'textKey',
-  value: 'valueKey',
-};
-
 class AddProductForm extends React.Component {
 
 
     render() {
-        console.log("this.props.signUpState.arr",this.props.signUpState.arr)
+        console.log("this.props.signUpState.products",this.props.signUpState.products)
         const datasource = []
 
-         { this.props.signUpState.arr.map((v, i) => {
+         { this.props.signUpState.products.map((v, i) => {
                                         return (
                                           datasource.push(v.productName)
                                         )
                                     })}
 
                                     console.log("datasource", datasource)
-
 
         return (
             <div >
@@ -140,7 +134,7 @@ class AddProductForm extends React.Component {
                                 required
                                 ref="store">
                                 {
-                                    this.props.signUpState.arr.map((v, i) => {
+                                    this.props.signUpState.products.map((v, i) => {
                                         return (
                                             <option value={v.productName} key={i}> {v.productName} </option>
                                         )
@@ -158,13 +152,16 @@ class AddProductForm extends React.Component {
           filter={AutoComplete.caseInsensitiveFilter}
           openOnFocus={true}
           name="productName"
-         value={this.props.signUpState.productName}
+           ref="productName"
+            value={this.props.signUpState.productName}
             dataSource={datasource}
              floatingLabelText="Product Name"
              hintText="Product Name"
-             onChange={this.props._inputHandler}
-          onUpdateInput={this.props.signUpState.handleUpdateInput}
-          dataSourceConfig={dataSourceConfig}
+          //   onChange={this.props._inputHandler}
+          onUpdateInput={this.props.handleUpdateInput}
+     //  onUpdateInput={this.props._inputHandler}
+       //   dataSourceConfig={dataSourceConfig}
+     
         />
                     <br /><br />
 
