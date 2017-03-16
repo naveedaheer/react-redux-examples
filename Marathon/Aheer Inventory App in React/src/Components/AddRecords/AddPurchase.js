@@ -151,7 +151,7 @@ class AddProductForm extends React.Component {
          // filter={AutoComplete.fuzzyFilter}
           filter={AutoComplete.caseInsensitiveFilter}
           openOnFocus={true}
-          name="productName"
+           name="productName"
            ref="productName"
             value={this.props.signUpState.productName}
             dataSource={datasource}
@@ -174,7 +174,6 @@ class AddProductForm extends React.Component {
                         onChange={this.props._inputHandler}
                         /><br /><br />
 
-                    
                         <TextField
                         type="text"
                         hintText="company"
